@@ -15,3 +15,5 @@ public class Procedural {
 	String[] date = {"monday", "tuesday", "wednesday"};
   }
 }
+
+/** THIS IS AT HOME TESTING; Introduction is the classwork */
