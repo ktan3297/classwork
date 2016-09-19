@@ -12,6 +12,6 @@ public class Student {
 	}
 	
 	public void talk(){
-		System.out.println("Hi. My name is " + name + ".");
+		System.out.println("Hi. My name is " + this.name + ".");
 	}
 }

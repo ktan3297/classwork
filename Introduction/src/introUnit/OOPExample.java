@@ -9,9 +9,9 @@ public class OOPExample {
 
 	public static void main(String[] args) {
 		//construct a student
-		Student jillian = new Senior("Jillian"); //student is class so its capitalized not jillian
-		Student jordan = new Student("Jordan");
-		Student joseph = new Student("Joseph");
+		Student jillian = new Senior("Jillian", "programmer"); //student is class so its capitalized not jillian
+		Student jordan = new Junior("Jordan");
+		Student joseph = new Freshman("Joseph");
 		jillian.talk();
 		jordan.talk();
 		joseph.talk();
