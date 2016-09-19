@@ -2,7 +2,7 @@ package introUnit;
 
 public class Senior extends Student {
 	
-	private String internship;
+	private String internship; //encapsulation
 	
 	public Senior(String name, String internship) {
 		super(name); //Student is the super

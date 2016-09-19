@@ -3,7 +3,7 @@ package introUnit;
 public class Student {
 	
 	//fields
-	private String name;
+	private String name; 
 	
 	//constructor (no return type. It creates students. has to be named of the class)
 	public Student(String name){
@@ -11,7 +11,7 @@ public class Student {
 		this.name = name;
 	}
 	
-	public void talk(){
+	public void talk(){ //inheritance; inheriting the talk method
 		System.out.println("Hi. My name is " + this.name + ".");
 	}
 }

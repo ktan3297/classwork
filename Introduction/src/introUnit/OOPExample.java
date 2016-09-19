@@ -10,7 +10,7 @@ public class OOPExample {
 	public static void main(String[] args) {
 		//construct a student
 		Student jillian = new Senior("Jillian", "programmer"); //student is class so its capitalized not jillian
-		Student jordan = new Junior("Jordan");
+		Student jordan = new Junior("Jordan"); //polymorphism; calling a junior a student
 		Student joseph = new Freshman("Joseph");
 		jillian.talk();
 		jordan.talk();
