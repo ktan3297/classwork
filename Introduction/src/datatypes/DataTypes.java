@@ -40,14 +40,14 @@ public class DataTypes {
 		//7 String s = "Happy "+ 54/3 + "th birthday!";
 		// System.out.println(s);
 		
-		// 8 String s = "Happy "+(54/3)+"th birthday!"; 
+		// 8 String s = "Happy "+ (54/3) + "th birthday!"; 
 		// System.out.println(s);
 		 
 		//9 and 10
 		int m = 22;
 		int n = 7;
-		System.out.println("m/n is "+(m/n)); // int
-		System.out.println("m/n is "+((double)m/n)); // makes it a double => decimal
+		System.out.println("m/n is " + (m/n)); // int
+		System.out.println("m/n is " + ((double)m/n)); // makes it a double => decimal
 		  
 	}
 

@@ -12,9 +12,11 @@ public class OOPExample {
 		Student jillian = new Senior("Jillian", "programmer"); //student is class so its capitalized not jillian
 		Student jordan = new Junior("Jordan"); //polymorphism; calling a junior a student
 		Student joseph = new Freshman("Joseph");
-		jillian.talk();
+		((Student)jillian).talk();
 		jordan.talk();
 		joseph.talk();
+		// jillian.super.talk(); //jillian is not a type since jillian is a super but super is not jillian
+		// ((Student)(jillian.super)).talk();
 	}
 
 }
