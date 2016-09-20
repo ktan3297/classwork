@@ -49,7 +49,6 @@ public class DataTypes {
 		System.out.println("m/n is "+(m/n)); // int
 		System.out.println("m/n is "+((double)m/n)); // makes it a double => decimal
 		  
-		//hw
 	}
 
 }
