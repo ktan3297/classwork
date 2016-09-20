@@ -4,9 +4,14 @@ import java.util.Random;
 
 public class Mathrandom {
 
+	static Random genNum = new Random();
+	static int ranNum = genNum.nextInt(6) + 1;
+	
 	public static void main(String[] args) {
 		for(int index = 0; index < 10; index++){
-			System.out.println("Roll #" + (index + 1) + " Die is " + rollFairDie());
+			if(index % 2 == 0)
+			System.out.println("Roll #" + (index + 1) + " Die is " + rollUnfairDie());
+			else System.out.println("Roll #" + (index + 1) + " Die is " + rollFairDie());
 		}
 	}
 	
@@ -15,8 +20,8 @@ public class Mathrandom {
 		return gen.nextInt(6) + 1;
 	}
 	
-	// public static int rollUnfairDie(){
-		// roll certain number more than others
-	//}
+	public static int rollUnfairDie(){
+		return ranNum;
+	}
 			
 }
