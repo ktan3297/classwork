@@ -16,7 +16,7 @@ public class OOPExample {
 		jordan.talk();
 		joseph.talk();
 		// jillian.super.talk(); //jillian is not a type since jillian is a super but super is not jillian
-		// ((Student)(jillian.super)).talk();
+		// ((Student)(jillian.super)).talk(); // you cannot cast object into its superclass
 	}
 
 }
