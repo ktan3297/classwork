@@ -1,6 +1,6 @@
 package chatbot;
 
-public class School implements Topic {
+public class TanSchool implements Topic {
 	
 	private boolean inSchoolLoop;
 	private String schoolsResponse;
