@@ -27,4 +27,11 @@ public class TanLike implements Topic {
 			}
 		}
 	}
+	
+	public boolean isTriggered(String userInput) {
+		if(TanMain.findKeyword(userInput, "like", 0) >= 0){
+			return true;
+		}
+		return false;
+	}
 }

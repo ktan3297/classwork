@@ -17,4 +17,17 @@ public class TanSchool implements Topic {
 			TanMain.print("That's my favorite part about school too!");
 		}
 	}
+	
+	public boolean isTriggered(String userInput) {
+		String[] triggers = {"school", "teacher", " class"};
+		// you could use a for loop
+		// to iterate through an array
+		if(TanMain.findKeyword(userInput, "school", 0) >= 0){
+			return true;
+		}
+		if(TanMain.findKeyword(userInput, "class", 0) >= 0){
+			return true;
+		}
+		return false;
+	}
 }
