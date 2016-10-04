@@ -10,6 +10,7 @@ public class TanMain {
 	static Topic school; //add fields 
 	static Topic like;
 	static Topic hello;
+	static Topic sports;
 	
 	public static void main(String[] args) {
 		createTopics();
@@ -46,6 +47,10 @@ public class TanMain {
 			else if(hello.isTriggered(response)){
 				inLoop = false;
 				hello.talk();
+			}
+			else if(sports.isTriggered(response)){
+				inLoop = false;
+				sports.talk();
 			}
 			else{
 				print("I'm sorry. I don't understand you.");
@@ -129,6 +134,7 @@ public class TanMain {
 		school = new TanSchool();	//extends object default constructor in the superclass
 		like = new TanLike();
 		hello = new TanHello();
+		sports = new Sports();
 	}
 	
 	public static String getInput(){
