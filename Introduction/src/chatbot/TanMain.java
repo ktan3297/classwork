@@ -51,6 +51,7 @@ public class TanMain {
 			else if(sports.isTriggered(response)){
 				inLoop = false;
 				print("Do you want to talk about sports or baseball");
+				sports.talk();
 				response = getInput();
 				if(findKeyword(response, "baseball", 0) >= 0){
 					System.out.println("INLOOP");
