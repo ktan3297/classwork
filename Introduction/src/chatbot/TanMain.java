@@ -24,13 +24,13 @@ public class TanMain {
 	public static void promptName() {
 		print("Hello, human! I am a board covered with semiconductors and other such electronic component. What is your name?");
 		user = input.nextLine();
-		print("Awesome! I will call you " + user + " until you termiante me.");
+		print("Awesome! I will call you " + user + " until you terminate me.");
 	}
 
 	public static void talkForever(){
 		inLoop = true;
 		while(inLoop){
-			print("Greetings, " + user+ ". How are you?");
+//			print("Greetings, " + user+ ". How are you?");
 			response = getInput();
 			// if(response.indexOf("good") >= 0){
 			if(findKeyword(response, "good", 0) >=0){
@@ -50,7 +50,18 @@ public class TanMain {
 			}
 			else if(sports.isTriggered(response)){
 				inLoop = false;
-				sports.talk();
+				print("Do you want to talk about sports or baseball");
+				response = getInput();
+				if(findKeyword(response, "baseball", 0) >= 0){
+					System.out.println("INLOOP");
+//					sports.changeBool();
+					sports.talk();
+				}
+				else{
+					if(findKeyword(response, "football", 0) >= 0){
+						sports.talk();
+					}
+				}
 			}
 			else{
 				print("I'm sorry. I don't understand you.");

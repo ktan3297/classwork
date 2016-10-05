@@ -4,19 +4,22 @@ public class Sports implements Topic {
 	private boolean inSportsLoop;
 	private boolean inBaseballLoop;
 	private boolean inFootballLoop;
-	private String sportsResponse;   
+	private String sportsResponse;  
+	private boolean inTeamLoop;
 	
 	// create more responses  
 	private static String[] sport = {"I love sports.", "What sport do you like more? Football or Baseball?", "I'm not really a fan."}; // add more responses
 	private static String[] football = {"Tom brady should be kicked out of the NFL", "the jets are not going to make playoffs this season.", "Broncos are doing well this season. Don't you think?", "I hope the NY Giants will win the superbowl again.", "Did you know that Lady Gaga is performing at this year's superbowl halftime?"};
 	private static String[] baseball = {"Mets are number 1 in the wild card race.", "Hopefully the Mets won't screw up the world series again", "Chase Utley should be banned from the MLB for breaking Tejada's leg"};
-	
+	private static String[] team = {"Knicks", "Jets", "Mets", "Giants", "Nets", "Broncos", "Patriots"};
+			
 	public void talk() {
-		inSportsLoop = true;
-		while(inSportsLoop){
+//		inSportsLoop = true;
+		while(inSportsLoop || inBaseballLoop || inFootballLoop){
 			printResponse();
+			System.out.println("talkLoop");
 			sportsResponse = TanMain.getInput();
-		
+			
 			if(!isTriggered(sportsResponse)){
 				inSportsLoop = false;
 				inBaseballLoop = false;
@@ -30,31 +33,49 @@ public class Sports implements Topic {
 		int sIndex = (int) (Math.random() * sport.length);
 		int bIndex = (int) (Math.random() * baseball.length);
 		int fIndex = (int) (Math.random() * football.length);
-		if(inBaseballLoop && inSportsLoop){
-			TanMain.print(baseball[bIndex]);
-		}
-		else
-		if(inFootballLoop && inSportsLoop){
-			TanMain.print(football[fIndex]);
+		int tIndex = (int) (Math.random() * team.length);
+		System.out.println("PRINTLLOOP");
+		if(inBaseballLoop){
+			if(inTeamLoop){
+				TanMain.print("My favorite team is " + team[tIndex] + ".");
+			}
+			else{
+				TanMain.print(baseball[bIndex]);
+			}
 		}
 		else{
-			TanMain.print(sport[sIndex]);
+			if(inFootballLoop){
+				if(inTeamLoop){
+					TanMain.print("My favorite team is " + team[tIndex] + ".");
+				}
+				else{
+					TanMain.print(football[fIndex]);
+				}
+			}
+//			else{
+//				TanMain.print(sport[sIndex]);
+//			}
 		}
 	}
 
 	public boolean isTriggered(String userInput) {
 		if(TanMain.findKeyword(userInput, "sports", 0) >= 0){
-			return true;
+			return inSportsLoop = true;
 		}
 		if(TanMain.findKeyword(userInput, "baseball", 0) >= 0){
-			inBaseballLoop = true;
-			inSportsLoop = true;
+			System.out.println("BASEBALL ON");
+			return inBaseballLoop = true;
 		}
 		if(TanMain.findKeyword(userInput, "football", 0) >= 0){
-			inFootballLoop = true;
-			inSportsLoop = true;
+			return inFootballLoop = true;
+		}
+		if(TanMain.findKeyword(userInput, "team", 0) >= 0){
+			return inTeamLoop = true;
 		}
 		return false;
 	}
-
+	
+	public void changeBoolean(){
+		inBaseballLoop = !inBaseballLoop;
+	}
 }

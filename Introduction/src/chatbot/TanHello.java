@@ -17,9 +17,10 @@ public class TanHello implements Topic {
 	public void talk() {
 		inHelloLoop = true;
 		while(inHelloLoop){
-			helloCount++;
-			printResponse();
-			helloResponse = TanMain.getInput();
+				helloCount++;
+				printResponse();
+				helloResponse = TanMain.getInput();
+			
 			if(!isTriggered(helloResponse)){
 				inHelloLoop = false;
 				TanMain.talkForever();
@@ -29,7 +30,7 @@ public class TanHello implements Topic {
 
 	private void printResponse() { //this is a helper method. it makes the code more readable
 		int responseIndex = 0;
-		if(helloCount < 3){
+		if(helloCount < 3 && helloCount >0){
 			responseIndex = (int) (Math.random() * calmResponses.length);
 			TanMain.print(calmResponses[responseIndex]);
 		}
