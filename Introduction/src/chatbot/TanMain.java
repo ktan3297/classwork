@@ -20,7 +20,7 @@ public class TanMain {
 //		System.out.println(s1.compareTo(s2)); -1 means less than. period/space/num comes before a;
 		promptName();
 		talkForever();
-	} 
+	}
 	
 	public static void promptName() {
 		print("Hello, human! I am a board covered with semiconductors and other such electronic component. What is your name?");
@@ -55,7 +55,7 @@ public class TanMain {
 			}
 //			else if(sports.isTriggered(response)){
 //				inLoop = false;
-//				print("Do you want to talk about football or baseball");
+//				print("Do you facts and opinion on football or baseball?");
 //				sports.talk();
 //				response = getInput();
 //				if(findKeyword(response, "baseball", 0) >= 0){
@@ -66,10 +66,6 @@ public class TanMain {
 //						sports.talk();
 //					}
 //				}
-//			}
-//			else if(sports.isTriggered(response)){
-//				inLoop = false;
-//				sports.talk();
 //			}
 			else{
 				print("I'm sorry. I don't understand you.");
