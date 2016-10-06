@@ -13,7 +13,7 @@ public class TanHello implements Topic {
 	public TanHello(){
 		helloCount = 0;
 	}
-	
+	 
 	public void talk() {
 		inHelloLoop = true;
 		while(inHelloLoop){

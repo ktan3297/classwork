@@ -20,7 +20,7 @@ public class TanMain {
 //		System.out.println(s1.compareTo(s2)); -1 means less than. period/space/num comes before a;
 		promptName();
 		talkForever();
-	}
+	} 
 	
 	public static void promptName() {
 		print("Hello, human! I am a board covered with semiconductors and other such electronic component. What is your name?");

@@ -8,7 +8,7 @@ public class TanBaseball implements Topic {
 	private String bResponse;
 	private static String[] bQuestions = {"Who is on first base", "Who just hit a grand slam?", "Who is pitching today?", "Who is batting right now?", 
 										 "Who threw the ball to 3rd base?", "Who just got banned from MLB?", "Who got a home run?", "Who struck out?", 
-										 "Who is the ace pitcher?", "Who lead their team to victory in the World Series?"};
+							   			 "Who is the ace pitcher?", "Who lead their team to victory in the World Series?"};
 	
 	public void talk() {
 		inBaseballLoop1 = true;
