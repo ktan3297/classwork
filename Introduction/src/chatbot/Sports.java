@@ -1,3 +1,5 @@
+//Kristy Tan
+
 package chatbot;
 
 public class Sports implements Topic {
@@ -7,17 +9,15 @@ public class Sports implements Topic {
 	private String sportsResponse;  
 	private boolean inTeamLoop;
 	
-	// create more responses  
-	private static String[] sport = {"I love sports.", "What sport do you like more? Football or Baseball?", "I'm not really a fan."}; // add more responses
+	
 	private static String[] football = {"Tom brady should be kicked out of the NFL", "the jets are not going to make playoffs this season.", "Broncos are doing well this season. Don't you think?", "I hope the NY Giants will win the superbowl again.", "Did you know that Lady Gaga is performing at this year's superbowl halftime?"};
 	private static String[] baseball = {"Mets are number 1 in the wild card race.", "Hopefully the Mets won't screw up the world series again", "Chase Utley should be banned from the MLB for breaking Tejada's leg"};
-	private static String[] team = {"Knicks", "Jets", "Mets", "Giants", "Nets", "Broncos", "Patriots"};
-			
+	private static String[] bteam = {"New York Mets", "San Fransico Giants", "Cleveland Cavaliers", "Miami Heat"};
+	private static String[] fteam = {"New York Jets", "New York Giants", "Denver Broncos", "New England Patriots", "Miami Dolphins"};
 	public void talk() {
-//		inSportsLoop = true;
+		inSportsLoop = true;
 		while(inSportsLoop || inBaseballLoop || inFootballLoop){
 			printResponse();
-			System.out.println("talkLoop");
 			sportsResponse = TanMain.getInput();
 			
 			if(!isTriggered(sportsResponse)){
@@ -30,14 +30,14 @@ public class Sports implements Topic {
 	}
 
 	private void printResponse() {
-		int sIndex = (int) (Math.random() * sport.length);
 		int bIndex = (int) (Math.random() * baseball.length);
 		int fIndex = (int) (Math.random() * football.length);
-		int tIndex = (int) (Math.random() * team.length);
-		System.out.println("PRINTLLOOP");
+		int btIndex = (int) (Math.random() * bteam.length);
+		int ftIndex = (int) (Math.random() * fteam.length);
+		
 		if(inBaseballLoop){
 			if(inTeamLoop){
-				TanMain.print("My favorite team is " + team[tIndex] + ".");
+				TanMain.print("My favorite team is " + bteam[btIndex] + ".");
 			}
 			else{
 				TanMain.print(baseball[bIndex]);
@@ -46,15 +46,12 @@ public class Sports implements Topic {
 		else{
 			if(inFootballLoop){
 				if(inTeamLoop){
-					TanMain.print("My favorite team is " + team[tIndex] + ".");
+					TanMain.print("My favorite team is " + fteam[ftIndex] + ".");
 				}
 				else{
 					TanMain.print(football[fIndex]);
 				}
 			}
-//			else{
-//				TanMain.print(sport[sIndex]);
-//			}
 		}
 	}
 
@@ -62,20 +59,18 @@ public class Sports implements Topic {
 		if(TanMain.findKeyword(userInput, "sports", 0) >= 0){
 			return inSportsLoop = true;
 		}
-		if(TanMain.findKeyword(userInput, "baseball", 0) >= 0){
-			System.out.println("BASEBALL ON");
+		if(inSportsLoop && TanMain.findKeyword(userInput, "baseball", 0) >= 0){
+			inFootballLoop = false;
 			return inBaseballLoop = true;
 		}
-		if(TanMain.findKeyword(userInput, "football", 0) >= 0){
+		if(inSportsLoop && TanMain.findKeyword(userInput, "football", 0) >= 0){
+			inBaseballLoop = false; 
 			return inFootballLoop = true;
+			
 		}
-		if(TanMain.findKeyword(userInput, "team", 0) >= 0){
+		if(inSportsLoop && TanMain.findKeyword(userInput, "team", 0) >= 0){
 			return inTeamLoop = true;
 		}
 		return false;
-	}
-	
-	public void changeBoolean(){
-		inBaseballLoop = !inBaseballLoop;
 	}
 }
