@@ -20,7 +20,7 @@ public class TanHello implements Topic {
 				helloCount++;
 				printResponse();
 				helloResponse = TanMain.getInput();
-			
+				
 			if(!isTriggered(helloResponse)){
 				inHelloLoop = false;
 				TanMain.talkForever();

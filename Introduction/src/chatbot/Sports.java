@@ -1,5 +1,6 @@
 package chatbot;
 
+
 public class Sports implements Topic {
 	private boolean inSportsLoop;
 	private boolean inBaseballLoop;
@@ -17,7 +18,6 @@ public class Sports implements Topic {
 //		inSportsLoop = true;
 		while(inSportsLoop || inBaseballLoop || inFootballLoop){
 			printResponse();
-			System.out.println("talkLoop");
 			sportsResponse = TanMain.getInput();
 			
 			if(!isTriggered(sportsResponse)){
@@ -34,7 +34,6 @@ public class Sports implements Topic {
 		int bIndex = (int) (Math.random() * baseball.length);
 		int fIndex = (int) (Math.random() * football.length);
 		int tIndex = (int) (Math.random() * team.length);
-		System.out.println("PRINTLLOOP");
 		if(inBaseballLoop){
 			if(inTeamLoop){
 				TanMain.print("My favorite team is " + team[tIndex] + ".");
@@ -63,7 +62,6 @@ public class Sports implements Topic {
 			return inSportsLoop = true;
 		}
 		if(TanMain.findKeyword(userInput, "baseball", 0) >= 0){
-			System.out.println("BASEBALL ON");
 			return inBaseballLoop = true;
 		}
 		if(TanMain.findKeyword(userInput, "football", 0) >= 0){
@@ -75,7 +73,4 @@ public class Sports implements Topic {
 		return false;
 	}
 	
-	public void changeBoolean(){
-		inBaseballLoop = !inBaseballLoop;
-	}
 }
