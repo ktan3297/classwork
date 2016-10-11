@@ -10,7 +10,8 @@ public class TanMain {
 	static Topic school; //add fields 
 	static Topic like;
 	static Topic hello;
-	static Topic sports;
+//	static Topic sports;
+	static Topic baseball;
 	
 	public static void main(String[] args) {
 		createTopics();
@@ -48,20 +49,24 @@ public class TanMain {
 				inLoop = false;
 				hello.talk();
 			}
-			else if(sports.isTriggered(response)){
+			else if(baseball.isTriggered(response)){
 				inLoop = false;
-				print("Do you facts and opinion on football or baseball?");
-				sports.talk();
-				response = getInput();
-				if(findKeyword(response, "baseball", 0) >= 0){
-					sports.talk();
-				}
-				else{
-					if(findKeyword(response, "football", 0) >= 0){
-						sports.talk();
-					}
-				}
+				baseball.talk();
 			}
+//			else if(sports.isTriggered(response)){
+//				inLoop = false;
+//				print("Do you facts and opinion on football or baseball?");
+//				sports.talk();
+//				response = getInput();
+//				if(findKeyword(response, "baseball", 0) >= 0){
+//					sports.talk();
+//				}
+//				else{
+//					if(findKeyword(response, "football", 0) >= 0){
+//						sports.talk();
+//					}
+//				}
+//			}
 			else{
 				print("I'm sorry. I don't understand you.");
 			}
@@ -144,7 +149,8 @@ public class TanMain {
 		school = new TanSchool();	//extends object default constructor in the superclass
 		like = new TanLike();
 		hello = new TanHello();
-		sports = new Sports();
+//		sports = new Sports();
+		baseball = new TanBaseball();
 	}
 	
 	public static String getInput(){

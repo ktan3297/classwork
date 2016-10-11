@@ -13,14 +13,14 @@ public class TanHello implements Topic {
 	public TanHello(){
 		helloCount = 0;
 	}
-	
+	 
 	public void talk() {
 		inHelloLoop = true;
 		while(inHelloLoop){
 				helloCount++;
 				printResponse();
 				helloResponse = TanMain.getInput();
-			
+				
 			if(!isTriggered(helloResponse)){
 				inHelloLoop = false;
 				TanMain.talkForever();
