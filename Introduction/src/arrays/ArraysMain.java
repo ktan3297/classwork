@@ -8,7 +8,7 @@ public class ArraysMain {
 		arrayIntroMethod();
 		long endTime = System.currentTimeMillis();
 		System.out.println("Completed method in " + (endTime - startTime) + "ms.");
-	}
+	} 
 	
 	public static void arrayIntroMethod(){
 //		construct 3 integer arrays
