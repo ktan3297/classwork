@@ -19,7 +19,7 @@ public class ArraysMain { // have fixed size, same types, and index
 		int ten = 10;
 		increase(ten);
 		System.out.println("Ten, increased is " + ten);
-		
+//		doesn't change value it changes local variable
 //		in this method, we pass the element
 //		(a variable) not the array so no change will be made
 		System.out.println("Before" + someStrings[99]);
