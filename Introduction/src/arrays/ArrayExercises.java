@@ -6,10 +6,11 @@ public class ArrayExercises {
 		String[] strings1 = new String[50];
 		String[] strings2 = new String[5];
 		String[] deck = new String[52];
-		
+		//populate array 1-50
 //		populateArray(strings1);
 //		printArray(strings1);
 		
+		//populate array with random ints
 //		randomInt(strings1);
 //		printArray(strings1);
 		
@@ -45,10 +46,12 @@ public class ArrayExercises {
 	private static void deckCards(String[] d){
 		String[] card = {"ace", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "jack", "queen", "king"};
 		String[] suite = {"diamond", "clubs", "hearts", "spades"};
+		int i = 0;
 			for(int index = 0; index < card.length; index++){
 				for(int s = 0; s < suite.length; s++){
-					String x = card[index] + suite[s];
-					System.out.println(x);
+					String x = card[index] + " of " + suite[s];
+					d[i] = x;
+					i++;
 				}
 			}
 	}
