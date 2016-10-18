@@ -4,12 +4,17 @@ public class ArrayHw {
 
 	public static void main(String[] args) {
     	int[] nums = {1,4,8,2,0, 8,9};
-    	int[] num1 = {1,3,5, 4};
-    	int[] num2 = {1,3,5, 1};
-    	reverseOrder(nums);
-    	printArray(nums);
-    	System.out.println("");
-    	countDifferences(num1, num2);
+    	int[] num1 = {1,3,5, 4 , 1};
+    	int[] num2 = {1,3,5, 1, 5};
+    	int[] consec = {1,2,3,4,5,6,8,9, 10, 11, 12, 13, 14};
+//    	reverseOrder(nums);
+//    	printArray(nums);
+//    	System.out.println("");
+//    	countDifferences(num1, num2);
+    	
+    	//continue
+    	longestConsecutiveSequence(consec);
+    	
     }
 	
 	public static void printArray(int[] a) {
@@ -39,7 +44,6 @@ public class ArrayHw {
              * index 4 = the number of values greater than or equal to the mean
              * index 5 = the number of values below the mean
              * */
-        	// 1 4 2 9 7
              double[] stats = new double[6];
              return stats;
         }
@@ -65,7 +69,7 @@ public class ArrayHw {
     				return countDiff;
     			}
         	}
-             return 0;
+           return 0;
         }
         
 
@@ -79,8 +83,19 @@ public class ArrayHw {
              * longestSequence({0,9,10,11,4,3,8,9}) returns '3', since '9,10,11' is 3 integers long
              * longestSequence({0,9,8,11,4,3,7,9}) returns '1', since there are no consecutive integers
              * */
-            
-            return 0;
+      //  	1 2 3 4 5 8 9
+      //	
+        	int sequenceCount = 1;
+            for(int i = 0; i < array1.length; i++){
+            	if(array1[i + 1] == array1[i] + 1){
+            		sequenceCount++;
+            	}
+            	if(sequenceCount > 0 && array1[i + 1] != array1[i] + 1){
+            		System.out.print(sequenceCount);
+            		return sequenceCount;
+            	}
+            }
+            return 1;
         }
 
         public static int longestSharedSequence(int[] array1, int[] array2){
