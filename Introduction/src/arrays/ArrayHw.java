@@ -1,18 +1,23 @@
 package arrays;
 
+import java.lang.reflect.Array;
+
 public class ArrayHw {
 
 	public static void main(String[] args) {
-    	int[] nums = {1,4,8,2,0, 8,9};
-    	int[] num1 = {1,3,5, 4 , 1};
-    	int[] num2 = {1,3,5, 1, 5};
-    	int[] consec = {1,2,3,4,5,6,8,9, 10, 11, 12, 13, 14};
-//    	reverseOrder(nums);
-//    	printArray(nums);
+    	int[] nums0 = {1,4,8,2,0,8,9};
+    	int[] num1 = {1,3,5,4,1};
+    	int[] num2 = {1,3,5,1,5};
+    	int[] consec = {1,2,3,4,5,6,3,2,1,8,9,10,2,11,12,13,14,16};
+    	double [] stat1 = {0,1,2,-10,6,3,4};
+    	
+//    	reverseOrder(nums0);
+//    	printArray(nums0);
 //    	System.out.println("");
 //    	countDifferences(num1, num2);
     	
     	//continue
+//    	getStats(stat1);
     	longestConsecutiveSequence(consec);
     	
     }
@@ -24,10 +29,10 @@ public class ArrayHw {
 	}
     
     public static void reverseOrder(int[] array){
-    	for(int i = 0; i < array.length /2; i++){
-        	int x = array[i];
-       		int y = array[array.length - (i +1)];
-       		array[i] = y;
+    	for(int i = 0; i < array.length /2; i++){		//start from the first and the last and worth your way to the middle of the array
+        	int x = array[i];							
+       		int y = array[array.length - (i +1)];		
+       		array[i] = y;								
        		array[array.length - (i +1)] = x;
    		}
     }
@@ -44,7 +49,57 @@ public class ArrayHw {
              * index 4 = the number of values greater than or equal to the mean
              * index 5 = the number of values below the mean
              * */
-             double[] stats = new double[6];
+            double[] stats = new double[6];
+            //find the mean
+            double z = 0;
+            for(int i = 0; i < array.length; i++){
+            	 z = z + array[i];						
+            	 if(i == array.length - 1){
+            		 double mean = z/array.length;
+            		 stats[0] = mean;
+            		 System.out.println(stats[0]);
+            		 
+            		 //find the # of values greater than or equal to the mean && below average
+            		 int totalGreater = 0;
+            		 int totalBelow = 0;
+            		 for(int s = 0; s < array.length; s++){
+            			 if(array[s] >= mean){
+            				 totalGreater++; //adds if number in array is >= than the mean
+            			 }
+            			 else{
+            				 totalBelow++; //adds if number in array is < the mea
+            			 }
+            			 if(s == array.length - 1){
+            				 stats[4] = totalGreater;
+            				 stats[5] = totalBelow;
+            				 System.out.println(stats[4]);
+            				 System.out.println(stats[5]);
+            			 }
+            		 }
+            	 }
+             }
+            
+            //find the max and max
+            double currentMax = 0;
+            double currentMin = 0;
+            for(int i = 0; i < array.length; i++){
+            	if(array[i] > currentMax){ //if the number is greater than the current max value, it will become the new max value
+            		currentMax = array[i];
+            	}
+            	if(array[i] <= currentMin){ //if the number is less than or equal to the current min value, it will become the new min value
+            		currentMin = array[i];
+            	}
+            	
+            	if(i == array.length - 1){
+            		stats[1] = currentMax;
+            		stats[2] = currentMin;
+            		System.out.println(stats[1]);
+            		System.out.println(stats[2]);
+            	}
+            }
+            
+            //FIND THE MEDIAN
+            
              return stats;
         }
         
@@ -60,11 +115,11 @@ public class ArrayHw {
              * 
              * */
         	int countDiff = 0;
-        	for(int i = 0; i < array1.length; i++){
-        		if(array1[i] != array2[i]){
+        	for(int i = 0; i < array1.length; i++){ 
+        		if(array1[i] != array2[i]){ //if the index in both arrays do not have the same values, the count increases
         			countDiff++;
         		}
-        		if(i == array1.length - 1){
+        		if(i == array1.length - 1){ // when end of the loop, print and return the count differences
     				System.out.println(countDiff);
     				return countDiff;
     			}
@@ -74,7 +129,7 @@ public class ArrayHw {
         
 
         public static int longestConsecutiveSequence(int[] array1){
-            /**This method counts the longest consequtive sequence in an array.
+            /**This method counts the longest consecutive sequence in an array.
              * It does not matter where the sequence begins
              * If there are no consecutive numbers, the method should return '1'
              * 
@@ -83,17 +138,22 @@ public class ArrayHw {
              * longestSequence({0,9,10,11,4,3,8,9}) returns '3', since '9,10,11' is 3 integers long
              * longestSequence({0,9,8,11,4,3,7,9}) returns '1', since there are no consecutive integers
              * */
-      //  	1 2 3 4 5 8 9
-      //	
+     
         	int sequenceCount = 1;
+        	int newSequence = 1;
             for(int i = 0; i < array1.length; i++){
-            	if(array1[i + 1] == array1[i] + 1){
-            		sequenceCount++;
+            	if(i != array1.length - 1 && array1[i + 1] == array1[i] + 1){  //if i is not the last item and the arr[i+1] is 1 greater than arr[i];
+            		sequenceCount++;  
             	}
-            	if(sequenceCount > 0 && array1[i + 1] != array1[i] + 1){
-            		System.out.print(sequenceCount);
-            		return sequenceCount;
+            	else if(sequenceCount > newSequence){ //when arr[i+1] no longer equals arr[i] +1 if the consec sequence is greater than the previous consec sequence, newSequence is the max consec
+            			newSequence = sequenceCount;
+            			sequenceCount = 1;
             	}
+            	
+            	if(i == array1.length - 1){ // when u reach the end of the loop, print and return newSequence
+            		System.out.println(newSequence);
+    				return newSequence;
+    			}
             }
             return 1;
         }
