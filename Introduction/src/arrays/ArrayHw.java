@@ -11,7 +11,7 @@ public class ArrayHw {
     	int[] consec = {1,2,3,4,5,6,3,2,1,8,9,10,2,11,12,13,14,16};
     	int[] isitSorted = {6,10,9,6,8,7,6};
     	double [] stat1 = {0,1,2,-10,6,3,4};
-    	
+    	//THESE ARE THE ONES THAT WORK AND ARE FINSIHED
 //    	reverseOrder(nums0);
 //    	printArray(nums0);
 //    	System.out.println("");
@@ -21,12 +21,11 @@ public class ArrayHw {
     	
     	//continue
 //    	getStats(stat1);
-//    	isSorted(isitSorted);
-    	
-    	generateDistinctItemsList(3);
-    	int maxNum = 3;
-    	int x = (int) (Math.random() * (maxNum+1) + maxNum); //3-6
-    	System.out.println(x);
+//    	isSorted(isitSorted); 	
+//    	generateDistinctItemsList(3);
+//    	int maxNum = 3;
+//    	int x = (int) (Math.random() * (maxNum+1) + maxNum); //3-6
+//    	System.out.println(x);
     }
 	
 	public static void printArray(int[] a) {
@@ -41,7 +40,7 @@ public class ArrayHw {
        		int y = array[array.length - (i +1)];		
        		array[i] = y;								
        		array[array.length - (i +1)] = x;
-   		}
+   		}	
     }
         
         
