@@ -7,19 +7,26 @@ public class ArrayHw {
 	public static void main(String[] args) {
     	int[] nums0 = {1,4,8,2,0,8,9};
     	int[] num1 = {1,3,5,4,1};
-    	int[] num2 = {1,3,5,1,5};
+    	int[] num2 = {0,1,3,5,1,5};
     	int[] consec = {1,2,3,4,5,6,3,2,1,8,9,10,2,11,12,13,14,16};
+    	int[] isitSorted = {6,10,9,6,8,7,6};
     	double [] stat1 = {0,1,2,-10,6,3,4};
     	
 //    	reverseOrder(nums0);
 //    	printArray(nums0);
 //    	System.out.println("");
 //    	countDifferences(num1, num2);
+//    	longestConsecutiveSequence(consec);   	
+//    	searchUnsorted(num2, 2);
     	
     	//continue
 //    	getStats(stat1);
-    	longestConsecutiveSequence(consec);
+//    	isSorted(isitSorted);
     	
+    	generateDistinctItemsList(3);
+    	int maxNum = 3;
+    	int x = (int) (Math.random() * (maxNum+1) + maxNum); //3-6
+    	System.out.println(x);
     }
 	
 	public static void printArray(int[] a) {
@@ -99,7 +106,12 @@ public class ArrayHw {
             }
             
             //FIND THE MEDIAN
-            
+            //first need to sort the array in order then find the median
+//            for(int i = 0; i < array.length; i++){
+//            	if(array[i] > array[i + 1]){
+//            	
+//            	}
+//            }
              return stats;
         }
         
@@ -147,7 +159,7 @@ public class ArrayHw {
             	}
             	else if(sequenceCount > newSequence){ //when arr[i+1] no longer equals arr[i] +1 if the consec sequence is greater than the previous consec sequence, newSequence is the max consec
             			newSequence = sequenceCount;
-            			sequenceCount = 1;
+            			sequenceCount = 1; 
             	}
             	
             	if(i == array1.length - 1){ // when u reach the end of the loop, print and return newSequence
@@ -172,6 +184,50 @@ public class ArrayHw {
             
             return 0;
         }
+        
+        public static int searchUnsorted(int[] arrayToSearch, int key){
+            /**
+             * this method take an unsorted int array (arrayToSearch) and returns an 
+             * int corresponding to the index of a key, if it is in the array
+             * if the key is not in the array, this method returns -1
+             * */
+        	for(int i = 0; i < arrayToSearch.length; i++){
+        		if(arrayToSearch[i] == key){
+        			System.out.println(i);
+        			return i;
+        		}
+        	}
+        	System.out.println("-1");
+            return -1;
+            }
+            
+            public static int searchSorted(int[] sortedArrayToSearch, int key){
+            /**
+             * this method is exactly like the one above, except the parameter sortedArrayToSearch will
+             * always be sorted in DESCENDING order. Again return the index of the key or return -1
+             * if the key is not in the array
+             * 
+             * Note: You should attempt to write a method that is more efficient that searchUnsorted
+             * */
+             return -1;
+            }
+            
+            public static boolean isSorted(int[] array){
+                /**
+                 * This method takes an in array as a parameter and returns 'true' if the array is already sorted in DESCENDING order
+                 * */
+            	// NEEDS TO BE FIXED
+            	int count1 = 0;
+            	for(int i = 0; i < array.length; i++){
+            		if(array[i + 1] == array[i] - 1 && count1 == i){
+            			System.out.println("true");
+            			count1++;
+            			return true;
+            		}
+            	}
+            	System.out.println("false");
+                return false;
+            }
 
         public static int[] generateDistinctItemsList(int n){
             /**
@@ -181,6 +237,28 @@ public class ArrayHw {
              * contains only entries between 1 and 2n (inclusive) and has no duplicates
              * 
              * */
+        	int[] array1 = new int[n];
+        	int maxNum = 2 * n;
+    //    	int minNum = n;
+        	for(int i = 0; i < n; i++){
+        		int x = (int) (Math.random() * (maxNum + 1) + n);
+        		int check = 0;
+        		for(int s = 0; i < n; i++){
+        			if(array1[s] == x){
+        				check++;
+        			}
+        			if(check == 0 && s == n - 1){
+        				array1[i] = x;
+        			}
+        			else if(check != 0 && s == n - 1){
+        				i  = i - 1;
+        			}
+        		}
+        		if(i == n - 1){
+        			System.out.println("!");
+        			return array1;
+        		}
+        	}
             return null; 
         }
         
