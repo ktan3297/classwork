@@ -32,7 +32,7 @@ public class ArrayMethods {
 		int placeHolder = arr[i];
 		arr[i] = arr[j];
 		arr[j] = placeHolder;
-	}
+	} 
 
 	/**
 	 * returns true if searchValue is less than element halfway between beginning and end 

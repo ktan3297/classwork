@@ -31,7 +31,7 @@ public class ArrayHw {
 	public static void printArray(int[] a) {
 		for(int s: a){
 			System.out.println(s);
-		}
+		} 
 	}
      
     public static void reverseOrder(int[] array){
