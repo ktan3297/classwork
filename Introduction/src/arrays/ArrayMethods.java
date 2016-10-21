@@ -6,7 +6,7 @@ public class ArrayMethods {
 		int[] arr = {2,3,5,6,9,11,12,15};
 		swap(arr,0,arr.length-1);
 		shuffle(arr);
-		printArray(arr);
+		printArray(arr); 
 //		if(checkHalfWay(arr, 12, 0, arr.length - 1)){
 //			System.out.println("The number you are searching for is less than the value in the middle of the array");
 //		}

@@ -33,7 +33,7 @@ public class ArrayHw {
 			System.out.println(s);
 		}
 	}
-    
+     
     public static void reverseOrder(int[] array){
     	for(int i = 0; i < array.length /2; i++){		//start from the first and the last and worth your way to the middle of the array
         	int x = array[i];							
