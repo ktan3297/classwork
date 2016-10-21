@@ -218,13 +218,14 @@ public class ArrayHw {
             	// NEEDS TO BE FIXED
             	int count1 = 0;
             	for(int i = 0; i < array.length; i++){
-            		if(array[i + 1] == array[i] - 1 && count1 == i){
-            			System.out.println("true");
+            		if(array[i + 1] != array[i] - 1){
             			count1++;
+            		}
+            		if(i == array.length -1 && count1 == 0){
+            			System.out.println("true");
             			return true;
             		}
             	}
-            	System.out.println("false");
                 return false;
             }
 
