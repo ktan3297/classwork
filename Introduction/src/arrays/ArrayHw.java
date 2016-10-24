@@ -106,11 +106,11 @@ public class ArrayHw {
             
             //FIND THE MEDIAN
             //first need to sort the array in order then find the median
-//            for(int i = 0; i < array.length; i++){
-//            	if(array[i] > array[i + 1]){
-//            	
-//            	}
-//            }
+            //switch with an item further down the array
+            for(int i = 1; i < array.length; i++){
+            	// code lesson 1.4
+            	
+            }
              return stats;
         }
         

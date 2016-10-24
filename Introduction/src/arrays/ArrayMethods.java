@@ -4,8 +4,9 @@ public class ArrayMethods {
 
 	public static void main(String[] args) {
 		int[] arr = {2,3,5,6,9,11,12,15};
-		swap(arr,0,arr.length-1);
-		shuffle(arr);
+//		swap(arr,0,arr.length-1);
+//		shuffle(arr);
+		cycleThrough(arr, 2);
 		printArray(arr); 
 //		if(checkHalfWay(arr, 12, 0, arr.length - 1)){
 //			System.out.println("The number you are searching for is less than the value in the middle of the array");
@@ -14,6 +15,18 @@ public class ArrayMethods {
 //			System.out.println("The number you are searching for is greater than or equal to the value in the middle of the aray");
 //		}
 	}
+	
+	private static void cycleThrough(int[] arr, int n){
+		for(int i = 0; i < n; i++){
+			for(int s = 0; s < arr.length; s++){
+				if(s != arr.length)	
+				swap(arr, i, i+1);
+				
+			}
+		}
+	}
+	//start at first index and swap it with the one after it. 
+	//swap first and the last then (0,1) (1,2) (2,3)(2,4)
 	private static void printArray(int[] a) {
 		for(int s: a){
 			System.out.println(s);
@@ -25,7 +38,6 @@ public class ArrayMethods {
 			int random = (int)(Math.random()*6);
 			swap(arr,i,random);
 		}
-		
 	}
 
 	private static void swap(int[] arr, int i, int j) {
