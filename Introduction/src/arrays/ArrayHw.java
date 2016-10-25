@@ -1,6 +1,7 @@
 package arrays;
 
 import java.lang.reflect.Array;
+import java.util.Arrays;
 
 public class ArrayHw {
 
@@ -20,7 +21,8 @@ public class ArrayHw {
 //    	searchUnsorted(num2, 2);
     	
     	//continue
-//    	getStats(stat1);
+    	double[] arr= getStats(stat1);
+    	System.out.println(Arrays.toString(arr));
 //    	isSorted(isitSorted); 	
 //    	generateDistinctItemsList(3);
 //    	int maxNum = 3;
@@ -286,6 +288,14 @@ public class ArrayHw {
              * CHALLENGE
              * For extra credit, make your method handle NEGATIVE n
              * */
+        	for(int s = 0; s < n; s++){
+                for(int i = 1; i < array.length; i++){
+               		int z = array[i];
+              			int y = array[i - 1];
+              			array[i] = y;
+              			array[i - 1] = z;       	
+               	}
+        	}
         }
 }
 
