@@ -10,8 +10,8 @@ public class ArrayHw {
     	int[] num1 = {1,3,5,4,1};
     	int[] num2 = {0,1,3,5,1,5};
     	int[] consec = {1,2,3,4,5,6,3,2,1,8,9,10,2,11,12,13,14,16};
-    	int[] isitSorted = {6,10,9,6,8,7,6};
-    	double [] stat1 = {0,1,2,-10,6,3,4};
+    	int[] isitSorted = {10,9,8,7,6};
+    	double [] stat1 = {0,1,2,8,6,3,4,5,4,7};
     	//THESE ARE THE ONES THAT WORK AND ARE FINSIHED
 //    	reverseOrder(nums0);
 //    	printArray(nums0);
@@ -19,15 +19,15 @@ public class ArrayHw {
 //    	countDifferences(num1, num2);
 //    	longestConsecutiveSequence(consec);   	
 //    	searchUnsorted(num2, 2);
+//    	getStats(stat1);
+// 		isSorted(isitSorted);
     	
     	//continue
-    	double[] arr= getStats(stat1);
-    	System.out.println(Arrays.toString(arr));
-//    	isSorted(isitSorted); 	
-//    	generateDistinctItemsList(3);
-//    	int maxNum = 3;
-//    	int x = (int) (Math.random() * (maxNum+1) + maxNum); //3-6
-//    	System.out.println(x);
+//    	int[] new1 = generateDistinctItemsList(3);
+//    	System.out.println(Arrays.toString(new1));
+    	int[] x = generateDistinctItemsList(3);
+    	System.out.println(Arrays.toString(x));
+
     }
 	
 	public static void printArray(int[] a) {
@@ -57,62 +57,77 @@ public class ArrayHw {
              * index 4 = the number of values greater than or equal to the mean
              * index 5 = the number of values below the mean
              * */
-            double[] stats = new double[6];
-            //find the mean
+        	double[] stats = new double[6];
             double z = 0;
-            for(int i = 0; i < array.length; i++){
-            	 z = z + array[i];						
-            	 if(i == array.length - 1){
-            		 double mean = z/array.length;
-            		 stats[0] = mean;
-            		 System.out.println(stats[0]);
-            		 
-            		 //find the # of values greater than or equal to the mean && below average
-            		 int totalGreater = 0;
-            		 int totalBelow = 0;
-            		 for(int s = 0; s < array.length; s++){
-            			 if(array[s] >= mean){
-            				 totalGreater++; //adds if number in array is >= than the mean
-            			 }
-            			 else{
-            				 totalBelow++; //adds if number in array is < the mea
-            			 }
-            			 if(s == array.length - 1){
-            				 stats[4] = totalGreater;
-            				 stats[5] = totalBelow;
-            				 System.out.println(stats[4]);
-            				 System.out.println(stats[5]);
-            			 }
-            		 }
-            	 }
+               for(int i = 0; i < array.length; i++){
+               	 z = z + array[i];						
+               	 if(i == array.length - 1){
+               		 double mean = z/array.length;
+               		 stats[0] = mean; //FIX HERE: idk why it reports a decimal in front of the answer
+               		 System.out.println("mean is " + stats[0]);
+               		 //find the # of values greater than or equal to the mean && below average
+               		 int totalGreater = 0;
+               		 int totalBelow = 0;
+               		 for(int s = 0; s < array.length; s++){
+               			 if(array[s] >= mean){
+               				 totalGreater++; //adds if number in array is >= than the mean
+               			 }
+               			 else{
+               				 totalBelow++; //adds if number in array is < the mea
+               			 }
+               			 if(s == array.length - 1){
+               				 stats[4] = totalGreater;
+               				 stats[5] = totalBelow;
+               				 System.out.println("> mean is" + stats[4]);
+               				 System.out.println("< mean is" + stats[5]);
+               			 }
+               		 }
+               	 }
+                }
+                //find the max and max
+               double currentMax = 0;
+               double currentMin = array[0];
+               for(int i = 0; i < array.length; i++){
+               	if(array[i] > currentMax){ //if the number is greater than the current max value, it will become the new max value
+               		currentMax = array[i];
+               	}
+               	if(array[i] <= currentMin){ //if the number is less than or equal to the current min value, it will become the new min value
+               		currentMin = array[i];
+               	}
+               	
+               	if(i == array.length - 1){
+               		stats[1] = currentMax;
+               		stats[2] = currentMin;
+               		System.out.println("max is" + stats[1]);
+               		System.out.println("min is " +stats[2]);
+               	}
+               }
+               for (int i = 0; i < array.length - 1; i++){
+           	    int tempLowIndex = i;
+           	    for (int j = i + 1; j < array.length; j++){
+           	        if (array[j] < array[tempLowIndex]){
+           	            tempLowIndex = j;
+           	        }
+           	    }
+           	   if(tempLowIndex!=i){
+           		   double placeHolder = array[tempLowIndex];
+              		array[tempLowIndex] = array[i];
+              		array[i] = placeHolder;
+           	   	} 
+           	 }
+             if(array.length%2 == 0){
+            	 int x = array.length/2 -1 ;
+            	 int y = array.length/2;
+            	 System.out.println(x);
+            	 System.out.println(y);
+            	 double median = (array[x] + array[y])/2;
+            	 stats[3] = median;
              }
-            
-            //find the max and max
-            double currentMax = 0;
-            double currentMin = 0;
-            for(int i = 0; i < array.length; i++){
-            	if(array[i] > currentMax){ //if the number is greater than the current max value, it will become the new max value
-            		currentMax = array[i];
-            	}
-            	if(array[i] <= currentMin){ //if the number is less than or equal to the current min value, it will become the new min value
-            		currentMin = array[i];
-            	}
-            	
-            	if(i == array.length - 1){
-            		stats[1] = currentMax;
-            		stats[2] = currentMin;
-            		System.out.println(stats[1]);
-            		System.out.println(stats[2]);
-            	}
-            }
-            
-            //FIND THE MEDIAN
-            //first need to sort the array in order then find the median
-            //switch with an item further down the array
-            for(int i = 1; i < array.length; i++){
-            	// code lesson 1.4
-            	
-            }
+             else{
+            	 stats[3] = array[array.length/2];
+             }
+
+             System.out.println("median is" + stats[3]);
              return stats;
         }
         
@@ -182,6 +197,7 @@ public class ArrayHw {
              *          since the sequence '9,6,3,4,3' is in both arrays and is 5 integers long, it doesn't matter that the sequence begins at different indices 
              * longestSequence({9,6,1,4,3,6,7,9}, {9,6,5,8,3,6,7,0}) returns '3', since the sequence '3,6,7' is in both arrays and is 3 integers long
              * */
+        	
             
             return 0;
         }
@@ -217,18 +233,40 @@ public class ArrayHw {
                 /**
                  * This method takes an in array as a parameter and returns 'true' if the array is already sorted in DESCENDING order
                  * */
-            	// NEEDS TO BE FIXED
-            	int count1 = 0;
+//            	int count = 0;
+//            	for(int i = 0; i < array.length; i++){
+//            		if(count == 0 && i == array.length -1){
+//            			System.out.println("true");
+//            			return true;
+//            		}
+//            		else if(array[i] < array[i + 1]){
+//            			count++;
+//            			System.out.println(count);
+//            		}
+//            	}
+//            	System.out.println("false");
+//                return false;
+            	int count = 0;
+            	int total = 0;
             	for(int i = 0; i < array.length; i++){
-            		if(array[i + 1] != array[i] - 1){
-            			count1++;
+            		for(int s = 0; s < array.length; s++){
+            			if(s > i && array[i] < array[s]){
+            				count++;
+            				total++;
+            			}
+            			else if(s < i && array[i] > array[s]){
+            				count++;
+            				total++;
+            			}
+            			if(count!= 0 && s == array.length -1){
+            				return false;
+            			}
             		}
-            		if(i == array.length -1 && count1 == 0){
-            			System.out.println("true");
+            		if(total == 0 && i == array.length -1){
             			return true;
             		}
             	}
-                return false;
+            	return false;
             }
 
         public static int[] generateDistinctItemsList(int n){
@@ -240,27 +278,33 @@ public class ArrayHw {
              * 
              * */
         	int[] array1 = new int[n];
-        	int maxNum = 2 * n;
-    //    	int minNum = n;
-        	for(int i = 0; i < n; i++){
-        		int x = (int) (Math.random() * (maxNum + 1) + n);
-        		int check = 0;
-        		for(int s = 0; i < n; i++){
-        			if(array1[s] == x){
-        				check++;
-        			}
-        			if(check == 0 && s == n - 1){
-        				array1[i] = x;
-        			}
-        			else if(check != 0 && s == n - 1){
-        				i  = i - 1;
+        	int x;
+        	for(int i = 0; i < array1.length; i++){
+        		System.out.println("loop i = " + i); 
+        		boolean inLoop = true; 
+        		while(inLoop){ // while loop to generate random x 
+        			int count = 0;
+        			x = (int) (Math.random() * n) + n;
+        			System.out.println("x is " + x);
+        			for(int s = 0; s < array1.length; s++){ //checks if x already exists in the array
+        				System.out.println("loop s: " +s);
+        				if(array1[s] == x){ // if x already exists, count increases and still in loop to generate another x
+        					count++;
+        					System.out.println("count" + count);
+        					inLoop = true;
+        				}
+        				if(s == array1.length -1 && count == 0){//if there is no duplicates, add x to array and exit loop and continue for loop
+        					array1[i] = x;
+        					System.out.println("array" + i + "is" + array1[i]);
+        					inLoop = false;
+        				}
         			}
         		}
-        		if(i == n - 1){
-        			System.out.println("!");
-        			return array1;
+        		if(i == array1.length - 1){ //if at the end of for loop, return array
+        			return array1; 
         		}
         	}
+        	
             return null; 
         }
         
