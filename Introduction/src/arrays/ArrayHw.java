@@ -7,8 +7,8 @@ public class ArrayHw {
 
 	public static void main(String[] args) {
     	int[] nums0 = {1,4,8,2,0,8,9};
-    	int[] num1 = {1,3,5,4,1};
-    	int[] num2 = {0,1,3,5,1,5};
+    	int[] num1 = {9,6,3,4,3,8,9};
+    	int[] num2 = {9,6,3,4,3,6,7};
     	int[] consec = {1,2,3,4,5,6,3,2,1,8,9,10,2,11,12,13,14,16};
     	int[] isitSorted = {10,9,8,7,6};
     	double [] stat1 = {0,1,2,8,6,3,4,5,4,7};
@@ -22,11 +22,8 @@ public class ArrayHw {
 //    	getStats(stat1);
 // 		isSorted(isitSorted);
     	
-    	//continue
-//    	int[] new1 = generateDistinctItemsList(3);
-//    	System.out.println(Arrays.toString(new1));
-    	int[] x = generateDistinctItemsList(3);
-    	System.out.println(Arrays.toString(x));
+    	System.out.println(longestSharedSequence(num1,num2));
+    	
 
     }
 	
@@ -197,9 +194,34 @@ public class ArrayHw {
              *          since the sequence '9,6,3,4,3' is in both arrays and is 5 integers long, it doesn't matter that the sequence begins at different indices 
              * longestSequence({9,6,1,4,3,6,7,9}, {9,6,5,8,3,6,7,0}) returns '3', since the sequence '3,6,7' is in both arrays and is 3 integers long
              * */
-        	
-            
-            return 0;
+        	// 
+        	int count = 1;
+        	int longestSequence = 0;
+            for(int i = 0; i < array1.length; i++){
+            	for(int s = 0; s< array2.length; s++){
+            		if(array1[i] == array2[s]){
+            			boolean inLoop = true;
+            			int increment = 1;
+            			while(inLoop){
+            				if((increment + i) < array1.length && (increment + s) < array2.length && array1[i + increment] == array2[s + increment] ){
+            					increment++;
+            					count++;
+            					
+            				}
+            				else{
+            					inLoop = false;
+            					
+            				}
+            				if(count > longestSequence){
+        						longestSequence = count;
+        						count = 1;
+        					}
+            			}
+            		}
+            		
+            	}
+            }
+            return longestSequence;
         }
         
         public static int searchUnsorted(int[] arrayToSearch, int key){
@@ -226,7 +248,14 @@ public class ArrayHw {
              * 
              * Note: You should attempt to write a method that is more efficient that searchUnsorted
              * */
-             return -1;
+            	for(int i = 0; i < sortedArrayToSearch.length; i++){
+            		if(sortedArrayToSearch[i] == key){
+            			System.out.println(i);
+            			return i;
+            		}
+            	}
+            	System.out.println("-1");
+                return -1;
             }
             
             public static boolean isSorted(int[] array){
