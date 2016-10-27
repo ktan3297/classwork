@@ -12,19 +12,8 @@ public class ArrayHw {
     	int[] consec = {1,2,3,4,5,6,3,2,1,8,9,10,2,11,12,13,14,16};
     	int[] isitSorted = {10,9,8,7,6};
     	double [] stat1 = {0,1,2,8,6,3,4,5,4,7};
-    	//THESE ARE THE ONES THAT WORK AND ARE FINSIHED
-//    	reverseOrder(nums0);
-//    	printArray(nums0);
-//    	System.out.println("");
-//    	countDifferences(num1, num2);
-//    	longestConsecutiveSequence(consec);   	
-//    	searchUnsorted(num2, 2);
-//    	getStats(stat1);
-// 		isSorted(isitSorted);
-    	
-    	System.out.println(longestSharedSequence(num1,num2));
-    	
 
+    	System.out.println(longestSharedSequence(num1,num2));
     }
 	
 	public static void printArray(int[] a) {
