@@ -30,16 +30,20 @@ public class ArrayMethods {
 		}
 		theNumbers[0] = false;
 		theNumbers[1] = false;
-		int increment = 2;
-		boolean first = true;
-		for(int test = 2; test < num2Test; test = test + increment){
-			if(!first){
-				theNumbers[test] = false;
-			}
-			else{
-				first = false;
+		for(int prime = 2; prime <= lastToCheck; prime++){
+			//when checking 50 numbers, it tests 2,3,4,5,6,7 as if prime
+			if(theNumbers[prime]){
+				//only checks numbers that are prime; numbers that are not crossed off
+				//it wont check off 4 and 6 becuz it is crossed off by 2
+				System.out.print("\n" + prime + " is prime. Crossing off:");
+				boolean first = true;
+				for(int test = prime + prime; test < num2Test; test = test + prime){
+					System.out.print(test + ", ");
+					theNumbers[test] = false;
+				}
 			}
 		}
+		System.out.println();
 		for(int i = 0; i < theNumbers.length; i++){
 			if(theNumbers[i]){
 				System.out.println(i + " is prime.");
