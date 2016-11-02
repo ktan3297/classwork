@@ -20,7 +20,20 @@ public class CaveExplorer {
 		
 		currentRoom = caves[0][1];
 		currentRoom.enter(); //enter will set contents of caveroom to an x
-		caves[0][1].setConnection(caves[0][2]);
+		caves[0][1].setConnection(CaveRoom.EAST, caves[0][2], new Door()); //shared programming protocol
+		caves[0][2].setConnection(CaveRoom.SOUTH, caves[1][2], new Door()); 
+		caves[1][2].setConnection(CaveRoom.SOUTH, caves[2][2], new Door()); 
+		startExploring();
+	}
+
+	private static void startExploring() { // one does input the other does AI
+		while(true){
+			System.out.println(currentRoom.getDescription());
+			System.out.println("What would you like to do?");
+			String input = in.nextLine();
+			currentRoom.interpretInput(input);
+		}
+		
 	}
 
 }

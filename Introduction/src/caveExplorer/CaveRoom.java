@@ -102,4 +102,9 @@ public class CaveRoom {
 	public void setDescription(String string) {
 		description = string;
 	}
+
+	public void interpretInput(String input) {
+		// TODO Auto-generated method stub
+		
+	}
 }
