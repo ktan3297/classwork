@@ -59,7 +59,7 @@ public class TwoDArrayIntro {
 			 pic[row][pic[0].length -1] = "|";
 		 }
 		 
-//		 for(int i = 0; i < 5; i++){
+//		 for(int i = 0; i < 5; i++){ //random birds
 //			 int x = (int) (Math.random()*pic.length);
 //			 for(int s = 0; s < pic[i].length; s++){
 //				 int y = (int) (Math.random()*pic[i].length);
