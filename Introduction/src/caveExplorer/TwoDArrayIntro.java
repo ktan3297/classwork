@@ -23,7 +23,7 @@ public class TwoDArrayIntro {
 				pic[row][col] = "0";
 			}
 		}
-		
+		 
 		i = 2;	//row
 		j = 3;	//col
 		in = new Scanner(System.in);

@@ -59,7 +59,7 @@ public class Mines {
 				if(Math.abs(row - r) + (Math.abs(col - c)) == 1 && mines[row][col]){ //checks every element 80times; slower
 					count++;
 				}
-			}
+			} 
 		}
 		
 		//this method is helpful when you want to be very specific 

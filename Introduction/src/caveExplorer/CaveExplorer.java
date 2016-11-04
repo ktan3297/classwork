@@ -10,7 +10,7 @@ public class CaveExplorer {
 	public static Inventory inventory;
 	
 	public static String[][] caveMap;
-	
+	 
 	public static void main(String[] args) {
 		caves = new CaveRoom[5][5];
 		

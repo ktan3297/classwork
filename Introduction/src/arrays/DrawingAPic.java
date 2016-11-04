@@ -55,7 +55,7 @@ public class DrawingAPic {
 			 for(int row = 1; row < pic.length; row++){
 				 pic[row][0] = "|";
 				 pic[row][pic[0].length -1] = "|";
-			 }
+			 } 
 			 
 //			 for(int i = 0; i < 5; i++){ //random birds
 //				 int x = (int) (Math.random()*pic.length);

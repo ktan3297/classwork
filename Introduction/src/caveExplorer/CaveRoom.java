@@ -9,7 +9,7 @@ public class CaveRoom {
 
 	private CaveRoom[] borderingRooms;
 	private Door[] doors; 
-
+ 
 	public static final int NORTH = 0;
 	public static final int EAST = 1;
 	public static final int SOUTH = 2;
