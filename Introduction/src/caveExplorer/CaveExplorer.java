@@ -9,8 +9,14 @@ public class CaveExplorer {
 	public static CaveRoom currentRoom;
 	public static Inventory inventory;
 	
+	public static String[][] caveMap;
+	
 	public static void main(String[] args) {
 		caves = new CaveRoom[5][5];
+		
+//		caveMap = new String[5][6];
+//		createMap(caveMap);
+//		printPic(caveMap);
 		
 		for(int row = 0; row < caves.length; row++){
 			for(int col = 0; col < caves[row].length; col++){
@@ -24,6 +30,9 @@ public class CaveExplorer {
 		caves[0][2].setConnection(CaveRoom.SOUTH, caves[1][2], new Door()); 
 		caves[1][2].setConnection(CaveRoom.SOUTH, caves[2][2], new Door()); 
 		startExploring();
+		
+		
+		
 	}
 
 	private static void startExploring() { // one does input the other does AI
@@ -35,5 +44,27 @@ public class CaveExplorer {
 		}
 		
 	}
+	
+//	public static void createMap(String[][] map){ // every other row is |; 3 per box
+//		for(int row = 0; row < map.length; row++){
+//			for(int col = 0; col < map[0].length; col++){
+//				if(col % 2 == 0){
+//					map[row][col] = "|";
+//				}
+//				else{
+//					map[row][col] = "_";
+//				}
+//			}
+//		}
+//	}
+//	
+//	public static void printPic(String[][] pic){
+//		for(int row = 0; row < pic.length; row++){
+//			for(int col = 0; col < pic[row].length; col++){
+//				System.out.print(pic[row][col]);
+//			}
+//			System.out.println();
+//		}
+//	}
 
 }
