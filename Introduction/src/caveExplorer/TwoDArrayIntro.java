@@ -10,8 +10,10 @@ public class TwoDArrayIntro {
 	public static Scanner in;
 	
 	public static void main(String[] args) {
-		arr2D = new String[5][4];
-		pic = new String[5][4];
+		
+		arr2D = new String[3][4];
+		pic = new String[3][4];
+		createGrid(arr2D);
 		for(int row = 0; row < arr2D.length; row++){
 			for(int col = 0; col < arr2D[0].length; col++){
 				arr2D[row][col] = "(" + row + "," + col + ")";
@@ -81,6 +83,42 @@ public class TwoDArrayIntro {
 		pic[i][j] = "X";
 	}
 	
+	public static void createGrid(String[][] map1){
+		for(int i = 0; i < map1[0].length; i++){ //makes  the top border
+			System.out.print(" ___");
+			if(i == map1[0].length - 1)
+				System.out.println("");
+			}
+		
+		for(int row = 0; row < map1.length; row++){	//for each row make the "|   " in each column
+			for(int k = 0; k < 2 ;k++){ //3 | per box 
+				for(int s = 0; s < map1[0].length + 1;s++){ // for each row in each column
+					if(s == map1[0].length){
+						System.out.print("|");
+					}
+					else{
+						System.out.print("|   ");
+					}
+				}
+				System.out.println("");
+			}
+			
+			for(int col = 0; col < map1[row].length; col++){
+				if(col == 0){
+					System.out.print("|___|");
+					
+				}
+				else if(col == map1[row].length - 1){
+					System.out.print("___|");
+					System.out.println("");
+				}
+				else{
+					System.out.print("___|");
+				}
+			}
+			
+		}
+	}
 	public static void printPic(String[][] pic){
 		for(int row = 0; row < pic.length; row++){
 			for(int col = 0; col < pic[row].length; col++){

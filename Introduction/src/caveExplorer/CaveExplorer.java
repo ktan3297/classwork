@@ -14,9 +14,9 @@ public class CaveExplorer {
 	public static void main(String[] args) {
 		caves = new CaveRoom[5][5];
 		
-//		caveMap = new String[5][6];
-//		createMap(caveMap);
-//		printPic(caveMap);
+		caveMap = new String[3][4];
+		createMap(caveMap);
+		printPic(caveMap);
 		
 		for(int row = 0; row < caves.length; row++){
 			for(int col = 0; col < caves[row].length; col++){
@@ -29,7 +29,7 @@ public class CaveExplorer {
 		caves[0][1].setConnection(CaveRoom.EAST, caves[0][2], new Door()); //shared programming protocol
 		caves[0][2].setConnection(CaveRoom.SOUTH, caves[1][2], new Door()); 
 		caves[1][2].setConnection(CaveRoom.SOUTH, caves[2][2], new Door()); 
-		startExploring();
+//		startExploring();
 		
 		
 		
@@ -45,26 +45,38 @@ public class CaveExplorer {
 		
 	}
 	
-//	public static void createMap(String[][] map){ // every other row is |; 3 per box
+	public static void createMap(String[][] map){ // every other row is |; 3 per box
 //		for(int row = 0; row < map.length; row++){
-//			for(int col = 0; col < map[0].length; col++){
-//				if(col % 2 == 0){
-//					map[row][col] = "|";
+//			for(int col = 0; col < map[row].length ; col++){
+//				if(col == map[row].length -1){
+//					map[row][col] = "|___|";
 //				}
-//				else{
-//					map[row][col] = "_";
-//				}
+//				else
+//				map[row][col] = "|___";
 //			}
+//			
 //		}
-//	}
-//	
-//	public static void printPic(String[][] pic){
-//		for(int row = 0; row < pic.length; row++){
-//			for(int col = 0; col < pic[row].length; col++){
-//				System.out.print(pic[row][col]);
-//			}
-//			System.out.println();
-//		}
-//	}
+		for(int row = 0; row < map.length; row++){
+			for(int col = 0; col < map[row].length ; col++){
+				if(col == 0){
+					
+					map[row][col] = "|___|";
+				}
+				else{
+					map[row][col] = "___|";
+				}
+			}
+			
+		}
+	}
+
+	public static void printPic(String[][] pic){
+		for(int row = 0; row < pic.length; row++){
+			for(int col = 0; col < pic[row].length; col++){
+				System.out.print(pic[row][col]);
+			}
+			System.out.println();
+		}
+	}
 
 }
