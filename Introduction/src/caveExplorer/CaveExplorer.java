@@ -46,28 +46,38 @@ public class CaveExplorer {
 	}
 	
 	public static void createMap(String[][] map){ // every other row is |; 3 per box
-//		for(int row = 0; row < map.length; row++){
-//			for(int col = 0; col < map[row].length ; col++){
-//				if(col == map[row].length -1){
-//					map[row][col] = "|___|";
-//				}
-//				else
-//				map[row][col] = "|___";
-//			}
-//			
-//		}
 		for(int row = 0; row < map.length; row++){
+			if(row == 0){
+				for(int s = 0; s < map[row].length ; s++){
+					System.out.print(" ___");
+					if(s == map[row].length -1){
+						System.out.println("");
+					}
+				}
+			}
 			for(int col = 0; col < map[row].length ; col++){
-				if(col == 0){
-					
+				
+				if(col == map[row].length -1){
 					map[row][col] = "|___|";
 				}
 				else{
-					map[row][col] = "___|";
+					map[row][col] = "|___";
 				}
 			}
 			
 		}
+//		for(int row = 0; row < map.length; row++){
+//			for(int col = 0; col < map[row].length ; col++){
+//				if(col == 0){
+//					
+//					map[row][col] = "|___|";
+//				}
+//				else{
+//					map[row][col] = "___|";
+//				}
+//			}
+//			
+//		}
 	}
 
 	public static void printPic(String[][] pic){
