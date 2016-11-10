@@ -41,4 +41,9 @@ public class Door {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
+	public String getDescription() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
