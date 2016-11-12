@@ -26,6 +26,7 @@ public class CaveExplorer {
 		caves[0][1].setConnection(CaveRoom.EAST, caves[0][2], new Door()); //shared programming protocol
 		caves[0][2].setConnection(CaveRoom.SOUTH, caves[1][2], new Door()); 
 		caves[1][2].setConnection(CaveRoom.SOUTH, caves[2][2], new Door()); 
+		
 		inventory = new Inventory();
 		startExploring();
 	}
