@@ -6,7 +6,7 @@ import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 
 public class Screen {
-	//afjdaslkfjda
+
 	private BufferedImage image;
 	
 	public Screen(int width, int height) {
