@@ -12,7 +12,7 @@ public abstract class GUIApplication extends JFrame{
 //	public static void main(String[] args) {
 //		new GUIApplication(800,600); 
 //	}
-	
+	 
 	public GUIApplication(int width, int height) {
 		super();
 		setBounds(20,20,width,height); //first 2 parameters are the starting coordinates 

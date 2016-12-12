@@ -13,7 +13,7 @@ public class MouseFollower extends GUIApplication {
 		super(width, height);
 		// TODO Auto-generated constructor stub
 	}
-
+ 
 	@Override
 	public void initScreen() {
 		cs = new CoordinateScreen(getWidth(), getHeight());

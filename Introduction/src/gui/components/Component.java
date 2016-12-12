@@ -8,10 +8,10 @@ public abstract class Component implements Visible {
 	//fields
 	private int x;
 	private int y;
-	private int w;
+	private int w; 
 	private int h;
 	private BufferedImage image;
-	
+	 
 	public Component(int x, int y, int w, int h) {
 		this.x = x;
 		this.y = y;
