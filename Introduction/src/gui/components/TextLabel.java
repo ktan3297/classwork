@@ -18,6 +18,7 @@ public class TextLabel extends Component {
 		this.text = text;
 		this.font = "Helvetica";
 		this.size = 20;
+		update();
 	}
 	
 	
@@ -28,6 +29,7 @@ public class TextLabel extends Component {
 
 	public void setText(String text) {
 		this.text = text;
+		update();
 	}
 
 
@@ -38,6 +40,7 @@ public class TextLabel extends Component {
 
 	public void setFont(String font) {
 		this.font = font;
+		update();
 	}
 
 
@@ -48,12 +51,13 @@ public class TextLabel extends Component {
 
 	public void setSize(int size) {
 		this.size = size;
+		update();
 	}
 
 	@Override
 	public void update(Graphics2D g) {
 		g.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
-		g.setColor(Color.black);
+		g.setColor(Color.white);
 		g.setFont(new Font(font, Font.PLAIN, size));
 		if(text != null){
 			g.drawString(text, 4, getHeight() - 5);

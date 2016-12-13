@@ -34,7 +34,7 @@ public abstract class GUIApplication extends JFrame{
 }
 
 // abstraction: generalized (parts that will be different and not always the same)
-//								can't instantiate an abstract class 
+//								CAN'T INSTANTIATE AN ABSTRACT CLASS 
 //	examples: 
 //		1. interface: description of methods (implement as many interfaces as you want)
 //		2. abstract class: description of methods and has methods=only useful to subclasses that inherit this class ~ kinda like a mix of an interface and a class
