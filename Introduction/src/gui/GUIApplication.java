@@ -1,10 +1,12 @@
 package gui;
 
 import java.awt.Graphics;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 
 import javax.swing.JFrame;
 
-public abstract class GUIApplication extends JFrame{
+public abstract class GUIApplication extends JFrame implements Runnable{
 	
 	private Screen currentScreen;
 	
@@ -25,11 +27,40 @@ public abstract class GUIApplication extends JFrame{
 	public abstract void initScreen(); //not defining this method. for each diff game you have to define it
 	
 	public void setScreen(Screen s){
+		//stop listening to previous screen
+		if(currentScreen != null){
+			MouseListener ml = currentScreen.getMouseListener();
+			if(ml != null){
+				removeMouseListener(ml);
+			}   
+			MouseMotionListener mml = currentScreen.getMouseMotionListener();
+			if(mml != null){
+				removeMouseMotionListener(mml);
+			}
+		}
 		currentScreen = s;
+		if(currentScreen != null){
+			addMouseListener(currentScreen.getMouseListener());
+			addMouseMotionListener(currentScreen.getMouseMotionListener());
+		}
 	}
 	
 	public void paint(Graphics g){
 		g.drawImage(currentScreen.getImage(), 0, 0, null);
+	}
+	
+	public void run(){
+		while(true){
+			//redraws the display; updates the picture
+			currentScreen.update();
+			//update the window; window shows pictures of a display
+			repaint();
+			try {
+				Thread.sleep(30);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 }
 

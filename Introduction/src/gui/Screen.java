@@ -3,6 +3,8 @@ package gui;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
@@ -39,6 +41,9 @@ public abstract class Screen {
 	}
 	
 	public void update() {
+//		for(int i = 0; i < viewObjects.size(); i++){}
+//		g.drawString("hello world", 40, 100);
+//		g.drawOval(20, 60, 100, 70);
 		Graphics2D g = image.createGraphics();
 		//smooth the graphics
 		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
@@ -48,8 +53,15 @@ public abstract class Screen {
 		for(Visible v: viewObjects){
 			g.drawImage(v.getImage(), v.getX(), v.getY(), null);
 		}
-//		for(int i = 0; i < viewObjects.size(); i++){}
-//		g.drawString("hello world", 40, 100);
-//		g.drawOval(20, 60, 100, 70);
+	}
+	
+	//represents ABILITY to listen to mouse
+	//but isn't actually doing something
+	public MouseMotionListener getMouseMotionListener(){
+		return null;
+	}
+	
+	public MouseListener getMouseListener(){
+		return null;
 	}
 }

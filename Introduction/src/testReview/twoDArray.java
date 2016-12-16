@@ -1,6 +1,6 @@
-package gui;
+package testReview;
 
-public class TestReview2 { //2D arrays: Lights Out
+public class twoDArray { //2D arrays: Lights Out
 	
 	private static boolean[][] grid;
 	
