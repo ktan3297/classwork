@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import gui.Screen;
 import gui.components.Action;
 import gui.components.Button;
+import gui.components.TextArea;
 import gui.components.TextLabel;
 import gui.components.Visible;
 
@@ -16,6 +17,7 @@ public class CoordinateScreen extends Screen implements MouseMotionListener{
 
 	private Button button1;
 	private TextLabel text;
+	private TextArea text1;
 	
 	public CoordinateScreen(int width, int height) {
 		super(width, height);
@@ -34,6 +36,8 @@ public class CoordinateScreen extends Screen implements MouseMotionListener{
 		viewObjects.add(button1);
 		text = new TextLabel(20, 200, 500, 40, "Some text");
 		viewObjects.add(text);
+		text1 = new TextArea(20, 100, 500, 40, "hi hello bye");
+		viewObjects.add(text1);
 	}
 
 	@Override
