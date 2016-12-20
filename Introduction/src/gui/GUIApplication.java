@@ -17,6 +17,7 @@ public abstract class GUIApplication extends JFrame implements Runnable{
 	 
 	public GUIApplication(int width, int height) {
 		super();
+//		setUndecorated(true); //gets rid of the bars
 		setBounds(20,20,width,height); //first 2 parameters are the starting coordinates 
 		//terminates the program when window is closed 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
