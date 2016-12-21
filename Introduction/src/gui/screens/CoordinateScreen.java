@@ -2,6 +2,7 @@ package gui.screens;
 
 import java.awt.Color;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionAdapter;
 import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
@@ -13,8 +14,9 @@ import gui.components.Graphic;
 import gui.components.TextArea;
 import gui.components.TextLabel;
 import gui.components.Visible;
+import gui.sampleGames.MouseFollower;
 
-public class CoordinateScreen extends Screen implements MouseMotionListener{
+public class CoordinateScreen extends Screen implements MouseMotionListener, MouseListener{
 
 	private Button button1;
 	private TextLabel text;
@@ -31,7 +33,7 @@ public class CoordinateScreen extends Screen implements MouseMotionListener{
 			
 			@Override
 			public void act() {
-				// TODO Auto-generated method stub
+				MouseFollower.game.setScreen(MouseFollower.myScreen);
 				
 			}
 		});
@@ -41,10 +43,15 @@ public class CoordinateScreen extends Screen implements MouseMotionListener{
 		area = new TextArea(20, 100, 500, 100, "This is really long text. It prints over multiple lines"
 				+ " as you can see, we worked on this in class. It is called Text Area");
 		viewObjects.add(area);
-		unicorn = new Graphic(30,30, 500,400, "resources/sampleImages/unicorn.jpg");
-		viewObjects.add(unicorn);
+//		unicorn = new Graphic(30,30, 0.15, "resources/sampleImages/unicorn.jpg");
+//		viewObjects.add(unicorn);
 	}
-
+	
+	
+	public MouseListener getMouseListener(){
+		return this;
+	}
+	
 	@Override
 	public void mouseDragged(MouseEvent e) { 
 		
@@ -59,5 +66,36 @@ public class CoordinateScreen extends Screen implements MouseMotionListener{
 	
 	public MouseMotionListener getMouseMotionListener(){
 		return this;
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		if(button1.isHovered(e.getX(), e.getY())){
+			button1.act();
+		}
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 }
