@@ -1,6 +1,9 @@
 package gui.sampleGames;
 
 import java.awt.Color;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 
 import gui.Screen;
@@ -24,5 +27,4 @@ public class MyScreen extends Screen {
 		text1 = new TextLabel(20, 200, 500, 40, "yay");
 		viewObjects.add(text1);
 	}
-
 }

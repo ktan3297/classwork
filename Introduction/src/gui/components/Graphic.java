@@ -15,25 +15,25 @@ public class Graphic implements Visible {
 	
 	// full size graphics constructor
 	public Graphic(int x, int y, String imageLocation) {
-		this.x = x;
-		this.y = y;
-		loadedImages = false;
+		this.setX(x);
+		this.setY(y);
+		setLoadedImages(false);
 		loadImages(imageLocation, 0, 0);
 	}
 
 	//custom size graphics constructor 
 	public Graphic(int x, int y, int w, int h, String imageLocation) {
-		this.x = x;
-		this.y = y;
-		loadedImages = false;
+		this.setX(x);
+		this.setY(y);
+		setLoadedImages(false);
 		loadImages(imageLocation, w, h);
 	}
 	
 	//scaled size graphics constructor 
 	public Graphic(int x, int y, double scale, String imageLocation) {
-		this.x = x;
-		this.y = y;
-		loadedImages = false;
+		this.setX(x);
+		this.setY(y);
+		setLoadedImages(false);
 		loadImages(imageLocation, scale);
 	}
 
@@ -71,7 +71,7 @@ public class Graphic implements Visible {
 				//null
 				g.drawImage(icon.getImage(), 0, 0, w, h, 0, 0, icon.getIconWidth(), icon.getIconHeight(), null);
 			}
-			loadedImages = true;
+			setLoadedImages(true);
 		}catch(Exception e){
 			//this happens when you don't make the image correctly
 			e.printStackTrace();
@@ -111,6 +111,22 @@ public class Graphic implements Visible {
 	@Override
 	public void update() {
 		//does nothing. image stays the same
+	}
+
+	public boolean isLoadedImages() {
+		return loadedImages;
+	}
+
+	public void setLoadedImages(boolean loadedImages) {
+		this.loadedImages = loadedImages;
+	}
+
+	public void setX(int x) {
+		this.x = x;
+	}
+
+	public void setY(int y) {
+		this.y = y;
 	}
 
 }

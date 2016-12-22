@@ -18,7 +18,7 @@ import gui.sampleGames.MouseFollower;
 
 public class CoordinateScreen extends Screen implements MouseMotionListener, MouseListener{
 
-	private Button button1;
+	private Button button;
 	private TextLabel text;
 	private TextArea area;
 	private Graphic unicorn;
@@ -29,15 +29,16 @@ public class CoordinateScreen extends Screen implements MouseMotionListener, Mou
 
 	@Override
 	public void initObjects(ArrayList<Visible> viewObjects) {
-		button1 = new Button(30, 300,80,50,"Button", Color.white, new Action() {
+		button = new Button(30, 300,80,50,"Button", Color.white, new Action() {
 			
 			@Override
 			public void act() {
-				MouseFollower.game.setScreen(MouseFollower.myScreen);
+				MouseFollower.game.setScreen(MouseFollower.screen1);
 				
 			}
 		});
-		viewObjects.add(button1);
+		viewObjects.add(button);
+		
 		text = new TextLabel(20, 200, 500, 40, "Some text");
 		viewObjects.add(text);
 		area = new TextArea(20, 100, 500, 100, "This is really long text. It prints over multiple lines"
@@ -45,6 +46,7 @@ public class CoordinateScreen extends Screen implements MouseMotionListener, Mou
 		viewObjects.add(area);
 //		unicorn = new Graphic(30,30, 0.15, "resources/sampleImages/unicorn.jpg");
 //		viewObjects.add(unicorn);
+		
 	}
 	
 	
@@ -70,8 +72,8 @@ public class CoordinateScreen extends Screen implements MouseMotionListener, Mou
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		if(button1.isHovered(e.getX(), e.getY())){
-			button1.act();
+		if(button.isHovered(e.getX(), e.getY())){
+			button.act();
 		}
 	}
 
