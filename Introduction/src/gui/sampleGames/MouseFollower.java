@@ -10,6 +10,7 @@ public class MouseFollower extends GUIApplication {
 	public static MouseFollower game; // only ONE exists
 	public static CoordinateScreen cs;
 	public static MyScreen screen1;
+	public static MyScreen screen2;
 	
 	public MouseFollower(int width, int height) {
 		super(width, height);
@@ -20,6 +21,7 @@ public class MouseFollower extends GUIApplication {
 		cs = new CoordinateScreen(getWidth(), getHeight());
 		setScreen(cs);
 		screen1 = new MyScreen(getWidth(), getHeight());
+		screen2 = new MyScreen(getWidth(), getHeight());
 	}
 
 	public static void main(String[] args) { //mousefollower is subclass of guiapp and guiapp is runnable

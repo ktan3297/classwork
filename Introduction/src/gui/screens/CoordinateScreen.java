@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import gui.Screen;
 import gui.components.Action;
 import gui.components.Button;
+import gui.components.ClickableGraphic;
 import gui.components.Graphic;
 import gui.components.TextArea;
 import gui.components.TextLabel;
@@ -21,7 +22,7 @@ public class CoordinateScreen extends Screen implements MouseMotionListener, Mou
 	private Button button;
 	private TextLabel text;
 	private TextArea area;
-	private Graphic unicorn;
+	private ClickableGraphic unicorn;
 	
 	public CoordinateScreen(int width, int height) {
 		super(width, height);
@@ -44,8 +45,12 @@ public class CoordinateScreen extends Screen implements MouseMotionListener, Mou
 		area = new TextArea(20, 100, 500, 100, "This is really long text. It prints over multiple lines"
 				+ " as you can see, we worked on this in class. It is called Text Area");
 		viewObjects.add(area);
-//		unicorn = new Graphic(30,30, 0.15, "resources/sampleImages/unicorn.jpg");
-//		viewObjects.add(unicorn);
+		unicorn = new ClickableGraphic(30,30, 0.15, "resources/sampleImages/unicorn.jpg", new Action(){
+			public void act(){
+				MouseFollower.game.setScreen(MouseFollower.screen2);
+			}
+		});
+		viewObjects.add(unicorn);
 		
 	}
 	
