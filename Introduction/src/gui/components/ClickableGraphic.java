@@ -27,6 +27,6 @@ public class ClickableGraphic extends Graphic implements Clickable {
 
 	@Override
 	public void act() {
-			act1.act();
+			if(act1 != null) act1.act();
 	}
 }

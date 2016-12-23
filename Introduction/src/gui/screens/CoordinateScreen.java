@@ -50,8 +50,9 @@ public class CoordinateScreen extends Screen implements MouseMotionListener, Mou
 
 			@Override
 			public void act() {
-				MouseFollower.game.setScreen(MouseFollower.screen1);
-				
+//				MouseFollower.game.setScreen(MouseFollower.screen1);
+			unicorn.setX(300);
+			unicorn.setY(200);
 			}
 			
 		});
@@ -86,9 +87,8 @@ public class CoordinateScreen extends Screen implements MouseMotionListener, Mou
 			button.act();
 		}
 		if(unicorn.isHovered(e.getX(), e.getY())){
-			unicorn.setX(300);
-			unicorn.setY(200);
-			//unicorn.act();
+
+			unicorn.act();
 		}
 	}
 
