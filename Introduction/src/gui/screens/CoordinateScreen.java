@@ -45,10 +45,15 @@ public class CoordinateScreen extends Screen implements MouseMotionListener, Mou
 		area = new TextArea(20, 100, 500, 100, "This is really long text. It prints over multiple lines"
 				+ " as you can see, we worked on this in class. It is called Text Area");
 		viewObjects.add(area);
-		unicorn = new ClickableGraphic(30,30, 0.15, "resources/sampleImages/unicorn.jpg", new Action(){
-			public void act(){
-				MouseFollower.game.setScreen(MouseFollower.screen2);
+		unicorn = new ClickableGraphic(30,30, 0.15, "resources/sampleImages/unicorn.jpg");
+		unicorn.setAction(new Action() {
+
+			@Override
+			public void act() {
+				MouseFollower.game.setScreen(MouseFollower.screen1);
+				
 			}
+			
 		});
 		viewObjects.add(unicorn);
 		
@@ -79,6 +84,11 @@ public class CoordinateScreen extends Screen implements MouseMotionListener, Mou
 	public void mouseClicked(MouseEvent e) {
 		if(button.isHovered(e.getX(), e.getY())){
 			button.act();
+		}
+		if(unicorn.isHovered(e.getX(), e.getY())){
+			unicorn.setX(300);
+			unicorn.setY(200);
+			//unicorn.act();
 		}
 	}
 
