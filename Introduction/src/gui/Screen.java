@@ -13,7 +13,7 @@ import gui.components.Visible;
 public abstract class Screen {
 
 	private BufferedImage image;
-	private ArrayList<Visible> viewObjects; //	private List viewObjects;
+	private ArrayList<Visible> viewObjects; //	private List viewObjects; 
 	
 	public Screen(int width, int height) {
 		viewObjects = new ArrayList<Visible>();
@@ -50,9 +50,13 @@ public abstract class Screen {
 		g.setColor(Color.pink);
 		g.fillRect(0, 0, image.getWidth(), image.getHeight());
 		g.setColor(Color.white);
-		for(Visible v: viewObjects){
+		for(int i = 0; i < viewObjects.size(); i++){
+			Visible v = viewObjects.get(i);
 			g.drawImage(v.getImage(), v.getX(), v.getY(), null);
 		}
+//		for(Visible v: viewObjects){
+//			g.drawImage(v.getImage(), v.getX(), v.getY(), null);
+//		}
 	}
 	
 	//represents ABILITY to listen to mouse
@@ -70,6 +74,78 @@ public abstract class Screen {
 	}
 	
 	public void removeObject(Visible v){
+		/**
+		 * note: in this implementation, we have
+		 * a very simple command: remove(v)
+		 * however, remove is sorta a big deal on the 
+		 * AP exam. Here's why:
+		 * 
+		 * When an object is removed from a List, every other 
+		 * object AFTER that object is moved up in order
+		 * Therefore, all of their respective indices change. 
+		 * You MUST MUST MUST be aware of this.
+		 * 
+		 * Here is a CLAAAAASSIC example:
+		 * 
+		 * The following is WRONG
+		 * Suppose you have a List <integer> with 
+		 * {4,8,7,1}
+		 * and you want to remove all integers greater than 5. 
+		 * You do this:
+		 * for(int i = 0; i < list.size(); i++){
+		 * 		if(list.get(i) > 5){
+		 * 			list.remove(i);
+		 * 		}
+		 * }
+		 * YOU FAAAAAAAAAIL!!!!!!!!!
+		 * 
+		 * Why do you fail?
+		 * i = 0; nothing changes
+		 * i = 1; the "8" is removed
+		 * {4,7,1}
+		 * i = 2; nothing changes
+		 * i = 3; exit the for loop. We end up with
+		 * {4,7,1}
+		 * 
+		 * THESE TWO WAYS ARE CORRECT:
+		 * 
+		 *  for(int i = 0; i < list.size(); i++){
+		 * 		while(list.get(i) > 5){
+		 * 			list.remove(i);
+		 * 			i--; //compensate for i++	
+		 * 		}
+		 * 	}
+		 * 
+		 * for the same reason, this doesn't even work because the size
+		 * of the lists can be changed:
+		 *   for(Integer i: list){
+		 * 		if(list.get(i) > 5){
+		 * 			list.remove(i);
+		 * 		}
+		 * 	 }
+		 * 
+		 * ONE MORE NOTE:
+		 * if you call list.remove(int) it will return the object
+		 * being removed at that index. so you can do something like this:
+		 * System.out.println(list.remove(0).toString() + "was removed.");
+		 */
+		
 		viewObjects.remove(v);
+	}
+	
+	public void moveToBack(Visible v){
+		if(viewObjects.contains(v)){
+			viewObjects.remove(v);
+			//the "back" is index 0
+			viewObjects.add(0, v);
+			//this moves everything else forward in the list 
+		}
+	}
+	
+	public void moveToFront(Visible v){
+		if(viewObjects.contains(v)){
+			viewObjects.remove(v);
+			viewObjects.add(v);
+		}
 	}
 }
