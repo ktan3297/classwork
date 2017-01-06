@@ -5,7 +5,6 @@ import gui.GUIApplication;
 public class WhackAMoleGame extends GUIApplication {
 
 	public WhackAMoleGame(int width, int height) {
-		// TODO Auto-generated constructor stub
 		super(width, height);
 	}
 

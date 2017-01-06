@@ -19,6 +19,8 @@ public class WhackAMoleScreen extends ClickableScreen implements Runnable {
 	public WhackAMoleScreen(int width, int height) {
 		super(width, height);
 		timeLeft = 30.0;
+		//when making simon, creating a thread like this is necessary since simon's screen
+		//changes
 		Thread play = new Thread(this);
 		play.start();
 	}
@@ -28,7 +30,7 @@ public class WhackAMoleScreen extends ClickableScreen implements Runnable {
 		player = getAPlayer();
 		label = new TextLabel(350, 220,100,40,"sample");
 		timeLabel = new TextLabel(360,40,80,40,"30.0");
-		//viewObjects.add(player);
+		viewObjects.add(player);
 		viewObjects.add(timeLabel);
 		viewObjects.add(label);
 	}
@@ -59,7 +61,7 @@ public class WhackAMoleScreen extends ClickableScreen implements Runnable {
 		label.setText("");
 		//since this is a time game, we will use a while 
 		//loop. This is not necessary for games that aren't
-		//timed
+		//timed (aren't timed like simon)
 		while(timeLeft > 0){
 			updateTimer();
 			updateAllMoles();
@@ -68,7 +70,7 @@ public class WhackAMoleScreen extends ClickableScreen implements Runnable {
 	}
 	
 	private void appearNewMole() { 
-		double chance = 0.2 * (60 - timeLeft) /60;
+		double chance = Math.random() * 0.2 * (60 - timeLeft) /60;
 		if(Math.random() < chance){
 			//create a mole
 			final MoleInterface mole = getAMole();
@@ -113,6 +115,7 @@ public class WhackAMoleScreen extends ClickableScreen implements Runnable {
 		timeLabel.setText("" + (int) (timeLeft*10)/10.0);
 	}
 
+	//USE THIS METHOD IN SIMON TOO
 	private void changeText(String string) {
 		label.setText(string);
 		try {

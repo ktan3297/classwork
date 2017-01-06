@@ -11,9 +11,9 @@ import gui.components.Visible;
 public abstract class ClickableScreen extends Screen implements MouseListener {
 
 	public ArrayList clickables;
+	
 	public ClickableScreen(int width, int height) {
 		super(width, height);
-		// TODO Auto-generated constructor stub
 	}
 	
 	public MouseListener getMouseListener(){
@@ -78,7 +78,5 @@ public abstract class ClickableScreen extends Screen implements MouseListener {
 
 	}
 
-	private void initAllObjects(ArrayList<Visible> viewObjects) {
-		
-	}
+	public abstract void initAllObjects(ArrayList<Visible> viewObjects);
 }
