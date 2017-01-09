@@ -28,8 +28,14 @@ public class SimonScreenKristyT extends ClickableScreen implements Runnable {
 
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
+		label1.setText("");
+	    nextRound();
+	}
 
+	private void nextRound() {
+		// TODO Auto-generated method stub
+		acceptingInput = false;
+		roundNumber++;
 	}
 
 	@Override
@@ -47,6 +53,7 @@ public class SimonScreenKristyT extends ClickableScreen implements Runnable {
 	}
 
 	private MoveInterfaceKristyT randomMove() {
+	//	ButtonInterfaceKristyT b;
 		int randomNum = (int) (Math.random() * button1.length);
 		//code that randomly selects a ButtonInterfaceX
 		while(randomNum == lastSelectedButton){
@@ -68,23 +75,38 @@ public class SimonScreenKristyT extends ClickableScreen implements Runnable {
 			//doesn't have 'final'
 			button1[i] = getAButton();
 			button1[i].setColor(colors1[i]);
-			//give it parameters
-//		    button1[i].setX();
-//		    button1[i].setY();
+		    button1[i].setX(150);
+		    button1[i].setY(250);
 		    button1[i].setAction(new Action(){
 		    	public void act(){
 		    		if(acceptingInput){
 		    			Thread blink = new Thread(new Runnable(){
 		    				public void run(){
 		    					button1[i].highlight();
-		    					Thread.sleep(800);
+		    					try{
+		    						Thread.sleep(800);
+		    					}
+		    					catch(InterruptedException e) {
+		    						e.printStackTrace();
+		    					}
 		    					button1[i].dim();
 		    				}
 		    			});
 		    			blink.start();
+		    			if(button1[i] == moveSequence1.get(sequenceIndex).getButton()){
+		    				sequenceIndex++;
+		    			}
+		    			else{
+		    				ProgressInterfaceKristyT.gameOver();
+		    			}
+		    			if(sequenceIndex == moveSequence1.size()){
+		    				Thread nextRound = new Thread(SimonScreenKristyT.this);
+							nextRound.start(); 
+		    			}
 		    		}
 		    	}
 		    });
+		    //add view objects
 		}
 	}
 

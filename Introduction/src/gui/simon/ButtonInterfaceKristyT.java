@@ -12,4 +12,11 @@ public interface ButtonInterfaceKristyT extends Clickable {
 	public void setAction(Action action);
 
 	public void highlight();
+
+	public void setX(int i);
+
+	public void setY(int i);
+
+	public void dim();
+
 }
