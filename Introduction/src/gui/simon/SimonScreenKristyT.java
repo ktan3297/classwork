@@ -1,6 +1,8 @@
 package gui.simon;
 
+import java.awt.Color;
 import java.util.ArrayList;
+import gui.components.Action;
 
 import gui.components.TextLabel;
 import gui.components.Visible;
@@ -10,7 +12,7 @@ public class SimonScreenKristyT extends ClickableScreen implements Runnable {
 
 	private ArrayList<MoveInterfaceKristyT> moveSequence1;
 	private TextLabel label1;
-	private ButtonInterfaceKristyT button1;
+	private ButtonInterfaceKristyT[] button1;
 	private ProgressInterfaceKristyT progress1;
 	
 	private int roundNumber;
@@ -45,9 +47,12 @@ public class SimonScreenKristyT extends ClickableScreen implements Runnable {
 	}
 
 	private MoveInterfaceKristyT randomMove() {
+		int randomNum = (int) (Math.random() * button1.length);
 		//code that randomly selects a ButtonInterfaceX
-		return getMove(b);
-
+		while(randomNum == lastSelectedButton){
+			randomNum = (int) (Math.random() * button1.length);
+		}
+		return getMove(button1[randomNum]);
 	}
 
 	private ProgressInterfaceKristyT getProgress() {
@@ -57,5 +62,34 @@ public class SimonScreenKristyT extends ClickableScreen implements Runnable {
 
 	private void addButtons() {
 		int numOfButtons = 6;
+		Color[] colors1 = {Color.blue, Color.green, Color.yellow, Color.red, Color.orange, Color.black};
+		button1 = new ButtonInterfaceKristyT[numOfButtons];
+		for(int i = 0; i < numOfButtons; i++){
+			//doesn't have 'final'
+			button1[i] = getAButton();
+			button1[i].setColor(colors1[i]);
+			//give it parameters
+//		    button1[i].setX();
+//		    button1[i].setY();
+		    button1[i].setAction(new Action(){
+		    	public void act(){
+		    		if(acceptingInput){
+		    			Thread blink = new Thread(new Runnable(){
+		    				public void run(){
+		    					button1[i].highlight();
+		    					Thread.sleep(800);
+		    					button1[i].dim();
+		    				}
+		    			});
+		    			blink.start();
+		    		}
+		    	}
+		    });
+		}
+	}
+
+	private ButtonInterfaceKristyT getAButton() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
