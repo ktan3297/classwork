@@ -75,7 +75,7 @@ public class SimonScreenKristyT extends ClickableScreen implements Runnable {
 
 	@Override
 	public void initAllObjects(ArrayList<Visible> viewObjects) {
-		addButtons();
+		addButtons(viewObjects);
 		progress1 = getProgress();
 		label1 = new TextLabel(130, 230, 300, 40,"Let's play Simon!");
 		moveSequence1 = new ArrayList<MoveInterfaceKristyT>();
@@ -89,12 +89,13 @@ public class SimonScreenKristyT extends ClickableScreen implements Runnable {
 
 	private MoveInterfaceKristyT randomMove() {
 	//	ButtonInterfaceKristyT b;
-		int randomNum = (int) (Math.random() * button1.length);
+		int randomNumSelect = (int) (Math.random() * button1.length);
 		//code that randomly selects a ButtonInterfaceX
-		while(randomNum == lastSelectedButton){
-			randomNum = (int) (Math.random() * button1.length);
+		while(randomNumSelect == lastSelectedButton){
+			randomNumSelect = (int) (Math.random() * button1.length);
 		}
-		return getMove(button1[randomNum]);
+		lastSelectedButton = randomNumSelect;
+		return getMove(button1[randomNumSelect]);
 	}
 
 	private ProgressInterfaceKristyT getProgress() {
@@ -102,38 +103,38 @@ public class SimonScreenKristyT extends ClickableScreen implements Runnable {
 		return null;
 	}
 
-	private void addButtons() {
+	private void addButtons(ArrayList<Visible> viewObjects) {
 		int numOfButtons = 6;
 		Color[] colors1 = {Color.blue, Color.green, Color.yellow, Color.red, Color.orange, Color.black};
 		button1 = new ButtonInterfaceKristyT[numOfButtons];
 		for(int i = 0; i < numOfButtons; i++){
-			//doesn't have 'final'
+			
 			button1[i] = getAButton();
 			button1[i].setColor(colors1[i]);
 		    button1[i].setX(150);
 		    button1[i].setY(250);
 		    
-	//	    final ButtonInterfaceKristyT b = button1[i];
+		    final ButtonInterfaceKristyT b = button1[i];
 		    
 		    button1[i].setAction(new Action(){
 		    	public void act(){
 		    		if(acceptingInput){
 		    			Thread blink = new Thread(new Runnable(){
 		    				public void run(){
-		    					button1[i].highlight();
+		    					b.highlight();
 		    					try{
 		    						Thread.sleep(800);
 		    					}
 		    					catch(InterruptedException e) {
 		    						e.printStackTrace();
 		    					}
-		    					button1[i].dim();
+		    					b.dim();
 		    				}
 		    			});
 		    		
 		    			blink.start();
 		    			
-		    			if(button1[i] == moveSequence1.get(sequenceIndex).getButton()){
+		    			if(b == moveSequence1.get(sequenceIndex).getButton()){
 		    				sequenceIndex++;
 		    			}
 		    			else{
@@ -146,7 +147,7 @@ public class SimonScreenKristyT extends ClickableScreen implements Runnable {
 		    		}
 		    	}
 		    });
-		    //add view objects
+		    viewObjects.add(button1[i]);
 		}
 	}
 	
@@ -163,7 +164,8 @@ public class SimonScreenKristyT extends ClickableScreen implements Runnable {
 		}
 	}
 
+	//change later
 	private ButtonInterfaceKristyT getAButton() {
-		return new Button();
+		return null;
 	}
 }
