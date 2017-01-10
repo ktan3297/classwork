@@ -6,7 +6,7 @@ import gui.components.Action;
 import gui.components.Clickable;
 import gui.components.TextLabel;
 import gui.components.Visible;
-import gui.sampleGames.ClickableScreen;
+import gui.screens.ClickableScreen;
 
 public class WhackAMoleScreen extends ClickableScreen implements Runnable {
 
