@@ -36,6 +36,41 @@ public class SimonScreenKristyT extends ClickableScreen implements Runnable {
 		// TODO Auto-generated method stub
 		acceptingInput = false;
 		roundNumber++;
+		progress1.setRoundNumber(roundNumber);
+		progress1.setSequence(moveSequence1.size());
+		changeText("Simon's Turn.");
+		label1.setText("");
+		playSequence();
+		changeText("Your Turn.");
+		acceptingInput = true;
+		sequenceIndex = 0;
+	}
+
+	private void playSequence() {
+		ButtonInterfaceKristyT b = null;
+		for(MoveInterfaceKristyT i:  moveSequence1){
+			if(b != null){
+				b.dim();
+				b = i.getButton();
+				b.highlight();
+				int sleepTime = 0;
+				if(roundNumber >= 3){
+					sleepTime = (int) (1500* (Math.random() * roundNumber + 1));
+				}
+				else{
+					sleepTime = (int) (3000 * (Math.random() * roundNumber + 1));
+				}
+				try{
+					Thread.sleep(sleepTime);
+				}
+				catch(InterruptedException e) {
+					e.printStackTrace();
+				}
+				
+			}
+		}
+		b.dim();
+		
 	}
 
 	@Override
@@ -77,6 +112,9 @@ public class SimonScreenKristyT extends ClickableScreen implements Runnable {
 			button1[i].setColor(colors1[i]);
 		    button1[i].setX(150);
 		    button1[i].setY(250);
+		    
+	//	    final ButtonInterfaceKristyT b = button1[i];
+		    
 		    button1[i].setAction(new Action(){
 		    	public void act(){
 		    		if(acceptingInput){
@@ -92,12 +130,14 @@ public class SimonScreenKristyT extends ClickableScreen implements Runnable {
 		    					button1[i].dim();
 		    				}
 		    			});
+		    		
 		    			blink.start();
+		    			
 		    			if(button1[i] == moveSequence1.get(sequenceIndex).getButton()){
 		    				sequenceIndex++;
 		    			}
 		    			else{
-		    				ProgressInterfaceKristyT.gameOver();
+		    				gameOver();
 		    			}
 		    			if(sequenceIndex == moveSequence1.size()){
 		    				Thread nextRound = new Thread(SimonScreenKristyT.this);
@@ -109,9 +149,21 @@ public class SimonScreenKristyT extends ClickableScreen implements Runnable {
 		    //add view objects
 		}
 	}
+	
+	public void gameOver() {
+		ProgressInterfaceKristyT.gameOver();
+	}
+
+	private void changeText(String string){
+		try {
+			label1.setText(string);
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
 
 	private ButtonInterfaceKristyT getAButton() {
-		// TODO Auto-generated method stub
-		return null;
+		return new Button();
 	}
 }
