@@ -95,7 +95,8 @@ public class SimonScreenKristyT extends ClickableScreen implements Runnable {
 			randomNumSelect = (int) (Math.random() * button1.length);
 		}
 		lastSelectedButton = randomNumSelect;
-		return getMove(button1[randomNumSelect]);
+		return null;
+	//	return getMove(button1[randomNumSelect]);
 	}
 
 	private ProgressInterfaceKristyT getProgress() {
