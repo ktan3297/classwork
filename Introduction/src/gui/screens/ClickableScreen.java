@@ -10,7 +10,7 @@ import gui.components.Visible;
 
 public abstract class ClickableScreen extends Screen implements MouseListener {
 
-	public ArrayList clickables;
+	public ArrayList<Clickable> clickables;
 	
 	public ClickableScreen(int width, int height) {
 		super(width, height);
@@ -22,24 +22,24 @@ public abstract class ClickableScreen extends Screen implements MouseListener {
 	
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
-		for(int i = 0; i < clickables.size(); i++){
-			if(((Clickable) clickables).isHovered(arg0.getX(), arg0.getY())){
-				((Clickable) clickables).act();
+		for(Clickable c: clickables){
+			if(c.isHovered(arg0.getX(), arg0.getY())){
+				c.act();
 				break;
 			}
 		}
 	}
 	
 	public void addObject(Visible v){
-		 super.addObject(v);
-		 if(v instanceof Clickable){
-			 clickables.add(v);
-		 }
+		super.addObject(v);
+		if(v instanceof Clickable){
+			clickables.add((Clickable)v);
+		}
 	}
 	
 	 public void remove(Visible v){
-		 super.removeObject(v);
-		 clickables.remove(v);
+		 super.remove(v);
+		clickables.remove(v);
 	} 
 
 	@Override
@@ -70,9 +70,9 @@ public abstract class ClickableScreen extends Screen implements MouseListener {
 	public void initObjects(ArrayList<Visible> viewObjects) {
 		initAllObjects(viewObjects);
 		clickables = new ArrayList<Clickable>();
-		for(int i = 0; i < viewObjects.size(); i++){
-			if(viewObjects instanceof Clickable){
-				clickables.add((Clickable) viewObjects);
+		for(Visible v: viewObjects){
+			if(v instanceof Clickable){
+				clickables.add((Clickable)v);
 			}
 		}
 

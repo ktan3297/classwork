@@ -73,7 +73,7 @@ public abstract class Screen {
 		viewObjects.add(v);
 	}
 	
-	public void removeObject(Visible v){
+	public void remove(Visible v){
 		/**
 		 * note: in this implementation, we have
 		 * a very simple command: remove(v)

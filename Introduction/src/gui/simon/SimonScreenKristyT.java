@@ -7,6 +7,7 @@ import gui.components.Action;
 import gui.components.TextLabel;
 import gui.components.Visible;
 import gui.screens.ClickableScreen;
+import testCode.Move;
 
 public class SimonScreenKristyT extends ClickableScreen implements Runnable {
 
@@ -32,11 +33,11 @@ public class SimonScreenKristyT extends ClickableScreen implements Runnable {
 	    nextRound();
 	}
 
-	private void nextRound() {
-		// TODO Auto-generated method stub
+	public void nextRound() {
 		acceptingInput = false;
 		roundNumber++;
 		progress1.setRoundNumber(roundNumber);
+		moveSequence1.add(randomMove());
 		progress1.setSequence(moveSequence1.size());
 		changeText("Simon's Turn.");
 		label1.setText("");
@@ -46,11 +47,12 @@ public class SimonScreenKristyT extends ClickableScreen implements Runnable {
 		sequenceIndex = 0;
 	}
 
-	private void playSequence() {
+	public void playSequence() {
 		ButtonInterfaceKristyT b = null;
 		for(MoveInterfaceKristyT i:  moveSequence1){
 			if(b != null){
 				b.dim();
+			}
 				b = i.getButton();
 				b.highlight();
 				int sleepTime = 0;
@@ -68,7 +70,7 @@ public class SimonScreenKristyT extends ClickableScreen implements Runnable {
 				}
 				
 			}
-		}
+		
 		b.dim();
 		
 	}
@@ -87,26 +89,25 @@ public class SimonScreenKristyT extends ClickableScreen implements Runnable {
 		viewObjects.add(label1);
 	}
 
-	private MoveInterfaceKristyT randomMove() {
-	//	ButtonInterfaceKristyT b;
+	public MoveInterfaceKristyT randomMove() {
+		ButtonInterfaceKristyT b = null;
 		int randomNumSelect = (int) (Math.random() * button1.length);
 		//code that randomly selects a ButtonInterfaceX
 		while(randomNumSelect == lastSelectedButton){
 			randomNumSelect = (int) (Math.random() * button1.length);
 		}
 		lastSelectedButton = randomNumSelect;
-		return null;
-	//	return getMove(button1[randomNumSelect]);
+		return new Move(button1[randomNumSelect]);
 	}
 
-	private ProgressInterfaceKristyT getProgress() {
+	public ProgressInterfaceKristyT getProgress() {
 		// TODO Auto-generated method stub
-		return null;
+		return new testCode.Progress();
 	}
 
-	private void addButtons(ArrayList<Visible> viewObjects) {
+	public void addButtons(ArrayList<Visible> viewObjects) {
 		int numOfButtons = 6;
-		Color[] colors1 = {Color.blue, Color.green, Color.yellow, Color.red, Color.orange, Color.black};
+		Color[] colors1 = {Color.blue, Color.green, Color.yellow, Color.red, Color.orange, new Color(255,0,255)};
 		button1 = new ButtonInterfaceKristyT[numOfButtons];
 		for(int i = 0; i < numOfButtons; i++){
 			
@@ -135,11 +136,12 @@ public class SimonScreenKristyT extends ClickableScreen implements Runnable {
 		    		
 		    			blink.start();
 		    			
-		    			if(b == moveSequence1.get(sequenceIndex).getButton()){
+		    			if(acceptingInput && b == moveSequence1.get(sequenceIndex).getButton()){
 		    				sequenceIndex++;
 		    			}
-		    			else{
+		    			else if(acceptingInput){
 		    				gameOver();
+		    				return;
 		    			}
 		    			if(sequenceIndex == moveSequence1.size()){
 		    				Thread nextRound = new Thread(SimonScreenKristyT.this);
@@ -156,7 +158,7 @@ public class SimonScreenKristyT extends ClickableScreen implements Runnable {
 		ProgressInterfaceKristyT.gameOver();
 	}
 
-	private void changeText(String string){
+	public void changeText(String string){
 		try {
 			label1.setText(string);
 			Thread.sleep(1000);
@@ -166,7 +168,7 @@ public class SimonScreenKristyT extends ClickableScreen implements Runnable {
 	}
 
 	//change later
-	private ButtonInterfaceKristyT getAButton() {
-		return null;
+	public ButtonInterfaceKristyT getAButton() {
+		return new testCode.Button();
 	}
 }

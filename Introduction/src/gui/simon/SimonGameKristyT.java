@@ -1,5 +1,7 @@
 package gui.simon;
 
+import javax.swing.JFrame;
+
 import gui.GUIApplication;
 
 public class SimonGameKristyT extends GUIApplication {

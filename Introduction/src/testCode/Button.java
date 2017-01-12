@@ -2,6 +2,7 @@ package testCode;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 
 import gui.components.Action;
 import gui.components.Component;
@@ -11,13 +12,15 @@ public class Button extends Component implements ButtonInterfaceKristyT {
 
 	private Color col;
 	private Action acts;
-	private int width = 65;
-	private int height = 65;
+	private final static int WIDTH = 65;
+	private final static int HEIGHT = 65;
 	private boolean highlighted;
+	 
+	private static int count;
 	
-	public Button(int x, int y, int w, int h) {
-		super(x, y, w, h);
-		// TODO Auto-generated constructor stub
+	public Button() {
+		super(70 * count + 50, 300, WIDTH, HEIGHT);
+		count++;
 	}
 
 	@Override
@@ -69,14 +72,15 @@ public class Button extends Component implements ButtonInterfaceKristyT {
 
 	@Override
 	public void update(Graphics2D arg0) {
+		arg0.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		if(col != null){  
 			arg0.setColor(col);
 		}
 		else{
 			arg0.setColor(Color.gray);
 		}
-		arg0.fillOval(0, 0, width, height);
-		arg0.drawOval(0, 0, width, height);
+		arg0.fillOval(0, 0, WIDTH, HEIGHT);
+		arg0.drawOval(0, 0, WIDTH - 1 , HEIGHT - 1);
 	}
 
 }

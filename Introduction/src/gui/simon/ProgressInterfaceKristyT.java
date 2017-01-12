@@ -1,5 +1,6 @@
 package gui.simon;
 
+import testCode.Progress;
 import gui.components.Visible;
 
 public interface ProgressInterfaceKristyT extends Visible {
