@@ -101,7 +101,6 @@ public class SimonScreenKristyT extends ClickableScreen implements Runnable {
 	}
 
 	public ProgressInterfaceKristyT getProgress() {
-		// TODO Auto-generated method stub
 		return new testCode.Progress();
 	}
 
@@ -116,8 +115,8 @@ public class SimonScreenKristyT extends ClickableScreen implements Runnable {
 		    button1[i].setX(150);
 		    button1[i].setY(250);
 		    
-		    final ButtonInterfaceKristyT b = button1[i];
-		    
+		    ButtonInterfaceKristyT b = button1[i];
+		    b.dim();
 		    button1[i].setAction(new Action(){
 		    	public void act(){
 		    		if(acceptingInput){
@@ -125,7 +124,7 @@ public class SimonScreenKristyT extends ClickableScreen implements Runnable {
 		    				public void run(){
 		    					b.highlight();
 		    					try{
-		    						Thread.sleep(800);
+		    						Thread.sleep(500);
 		    					}
 		    					catch(InterruptedException e) {
 		    						e.printStackTrace();

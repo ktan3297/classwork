@@ -1,6 +1,7 @@
 package testCode;
 
 import java.awt.Color;
+import java.awt.FontMetrics;
 import java.awt.Graphics2D;
 
 import gui.components.Component;
@@ -11,12 +12,12 @@ public class Progress extends Component implements ProgressInterfaceKristyT {
 	private String roundNum;
 	private String sequenceNum;
 	private boolean gameOver;
-
 	private static final int WIDTH = 120;
 	private static final int HEIGHT = 50;
 	
 	public Progress() {
 		super(60, 60, WIDTH, HEIGHT);
+		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -38,15 +39,16 @@ public class Progress extends Component implements ProgressInterfaceKristyT {
 
 	@Override
 	public void update(Graphics2D arg0) {
+
 		if(gameOver){
-			arg0.setColor(Color.black);
+			arg0.setColor(Color.yellow);
 			arg0.fillRect(0, 0, WIDTH, HEIGHT);
-			arg0.setColor(Color.white);
-			arg0.drawString("Game Over!", 120, 20);
-			arg0.drawString(sequenceNum, 120, 40);
+			arg0.setColor(Color.black);
+			arg0.drawString("Game Over!", (WIDTH - 45 )/2 , 20);
+			arg0.drawString(sequenceNum, (WIDTH - 55 )/2, 40);
 		}
 		else{
-			arg0.setColor(Color.white);
+			arg0.setColor(Color.orange);
 			arg0.fillRect(0, 0, WIDTH, HEIGHT);
 			arg0.setColor(Color.black);
 			arg0.drawRect(0, 0, WIDTH - 1, HEIGHT - 1);
@@ -56,5 +58,8 @@ public class Progress extends Component implements ProgressInterfaceKristyT {
 			}
 
 		}
+
 	}
+	
+
 }
