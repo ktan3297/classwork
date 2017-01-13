@@ -32,6 +32,7 @@ public class Button extends Component implements ButtonInterfaceKristyT{
 
 	@Override
 	public boolean isHovered(int arg0, int arg1) {
+		//didn't no formula 
 		double distance = Math.sqrt(Math.pow(arg0-(getX()+WIDTH/2), 2)+Math.pow(arg1-(getY()+HEIGHT/2), 2));
 		return distance < WIDTH/2;
 	}
