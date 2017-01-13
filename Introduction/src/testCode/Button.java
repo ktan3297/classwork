@@ -11,7 +11,7 @@ import gui.simon.ButtonInterfaceKristyT;
 public class Button extends Component implements ButtonInterfaceKristyT{
 
 	private Color col;
-	private Color col2;
+	private Color col2; 
 	private Action acts;
 	private final static int WIDTH = 65;
 	private final static int HEIGHT = 65;

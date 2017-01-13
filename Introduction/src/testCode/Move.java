@@ -11,7 +11,7 @@ public class Move implements MoveInterfaceKristyT {
 		this.moveButton = b;
 	}
 
-	@Override
+	@Override 
 	public ButtonInterfaceKristyT getButton() {
 		return moveButton;
 	}

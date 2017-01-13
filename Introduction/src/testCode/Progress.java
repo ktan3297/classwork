@@ -52,7 +52,7 @@ public class Progress extends Component implements ProgressInterfaceKristyT {
 			arg0.fillRect(0, 0, WIDTH, HEIGHT);
 			arg0.setColor(Color.black);
 			arg0.drawRect(0, 0, WIDTH - 1, HEIGHT - 1);
-			if(roundNum !=null && sequenceNum != null){
+			if(sequenceNum != null && roundNum !=null){
 				arg0.drawString(roundNum, (WIDTH - 45 )/2, 20);
 				arg0.drawString(sequenceNum, (WIDTH - 55)/2, 40);
 			}
