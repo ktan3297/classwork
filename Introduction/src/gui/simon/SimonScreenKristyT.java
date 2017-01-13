@@ -29,7 +29,7 @@ public class SimonScreenKristyT extends ClickableScreen implements Runnable {
 
 	@Override
 	public void run() {
-		label1.setText("");
+		changeText("");
 	    nextRound();
 	}
 
@@ -57,10 +57,10 @@ public class SimonScreenKristyT extends ClickableScreen implements Runnable {
 				b.highlight();
 				int sleepTime = 0;
 				if(roundNumber >= 3){
-					sleepTime = (int) (1500* (Math.random() * roundNumber + 1));
+					sleepTime = (int) (500* (Math.random() * roundNumber + 1));
 				}
 				else{
-					sleepTime = (int) (3000 * (Math.random() * roundNumber + 1));
+					sleepTime = (int) (1000 * (Math.random() * roundNumber + 1));
 				}
 				try{
 					Thread.sleep(sleepTime);
@@ -154,7 +154,7 @@ public class SimonScreenKristyT extends ClickableScreen implements Runnable {
 	}
 	
 	public void gameOver() {
-		ProgressInterfaceKristyT.gameOver();
+		progress1.gameOver();
 	}
 
 	public void changeText(String string){
