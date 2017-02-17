@@ -7,13 +7,18 @@ import java.util.ArrayList;
  *
  */ 
 
-public class Deck {
+public class Deck implements DeckInterface{
 
 	public static ArrayList <Card> deck;
 	
 	public Deck() {
 		generateDeck();
-	//	shuffleDeck();
+//		for(int i = 0 ; i <deck.size(); i++){
+//			System.out.println(deck.get(i).value + deck.get(i).faceValue +  deck.get(i).suit);
+//		}
+
+		shuffleDeck();
+		initialStart();
 	}
 	
 	public void generateDeck(){
@@ -38,12 +43,12 @@ public class Deck {
 			for(int s = 0; s < 4; s++){
 				if(i == 10 || i == 11 || i == 12 ){
 					deck.add(new Card(10, faces[i], suit[s], cardImages[iNum]));
-					System.out.println("hi");
+			//		System.out.println("hi");
 					iNum++;
 				}else{
-					System.out.println("bye");
+			//		System.out.println("bye");
 					deck.add(new Card(i + 1, faces[i], suit[s], cardImages[iNum]));
-					System.out.println("no");
+			//		System.out.println("no");
 					iNum++;
 				}
 			}
@@ -57,5 +62,32 @@ public class Deck {
 			deck.set(randNum, deck.get(i));
 			deck.set(i, holder);
 		}
+		setDeck(deck);
 	}
+	
+	public void initialStart(){
+		for(int i = 0; i < 2; i++){
+			System.out.println("i");
+			Dealer.dealerHand.add(deck.get(0));
+			System.out.println("ok");
+			deck.remove(0);
+			PlayerHand.hand.add(deck.get(0));
+			deck.remove(0);
+		}
+
+		setDeck(deck);
+	}
+
+	@Override
+	public void setDeck(ArrayList<Card> deckCard) {
+		deckCard = deck;
+	}
+
+	public static ArrayList<Card> getDeck() {
+		return deck;
+		
+	}
+
+
+
 }
