@@ -8,7 +8,7 @@ import gui.components.Visible;
  * @author Kristy Tan
  *
  */
- 
+  
 public class Card {
 
 	public int value;

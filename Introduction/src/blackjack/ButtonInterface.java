@@ -15,4 +15,4 @@ public interface ButtonInterface extends Clickable {
 
 	void setColor(Color red);
 
-}
+} 

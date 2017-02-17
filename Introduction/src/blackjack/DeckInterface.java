@@ -7,3 +7,4 @@ public interface DeckInterface {
 //	public void getCard();
 //	public ArrayList<Card> getDeck();
 }
+ 

@@ -9,7 +9,7 @@ import gui.components.Action;
 import gui.components.Component;
 
 public class Button extends Component implements ButtonInterface{
-
+ 
 	private Color col;
 	private Color col2;
 	private Action acts;

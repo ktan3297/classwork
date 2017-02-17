@@ -9,3 +9,4 @@ public interface CallInterface {
 	public boolean stand();
 	
 }
+ 

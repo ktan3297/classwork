@@ -1,7 +1,7 @@
 package blackjack;
 
 import gui.GUIApplication;
-
+ 
 public class BJGame extends GUIApplication {
 
 	public BJGame(int width, int height) {

@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * @author Kristy
  *
  */
-
+ 
 public class PlayerHand{
 
 	public static ArrayList <Card> hand;
@@ -27,7 +27,7 @@ public class PlayerHand{
 		}
 		setPlayerTotal(playerTotal);
 	}
-
+ 
 
 	public boolean stand() {
 		finalTotal = playerTotal;
