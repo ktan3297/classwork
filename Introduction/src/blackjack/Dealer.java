@@ -17,13 +17,14 @@ public class Dealer implements CallInterface {
 	 
 	public Dealer() {
 		dealerHand = new ArrayList <Card>();
-		if(!PlayerHand.getStandCall()){ //if not player's turn
+		//dealerTurn();
+	}
+	
+	public void dealerTurn(){
 			while(dealerPlaying){ //computer plays
 				checkValue(); //checkValue
 				chance(); //take a chance
 			}
-		}
-		checkWinner();
 	}
 	
 	public void checkWinner(){
@@ -83,8 +84,9 @@ public class Dealer implements CallInterface {
 	@Override 
 	public int checkValue() {
 		if(dealerPlaying){
+			currentTotal = 0;
 			for(int i = 0; i < dealerHand.size(); i++){
-				currentTotal += dealerHand.get(0).value;
+				currentTotal += dealerHand.get(i).value;
 			}
 		}
 		return currentTotal;
@@ -112,7 +114,6 @@ public class Dealer implements CallInterface {
 	@Override
 	public void setStandCall() {
 		dealerPlaying = false;
-		
 	}
 
 	@Override
@@ -124,7 +125,4 @@ public class Dealer implements CallInterface {
 	public void setTotal() {
 		finalCTotal = currentTotal;
 	}
-
-	
-
 }

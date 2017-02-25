@@ -29,7 +29,7 @@ public class BJScreen extends ClickableScreen implements Runnable {
 	private Graphic background;
 	public Graphic card1;
 	public Graphic card2;
-	public int positionCount = 100;
+	public int positionCount = 185;
 	public int nextRow = 200;
 	
 	public BJScreen(int width, int height) {
@@ -54,28 +54,26 @@ public class BJScreen extends ClickableScreen implements Runnable {
 		dealer1 = new Dealer();
 		deck1 = new Deck();
 		
-//		cards = new Graphic(15,200, 60,80, deck1.deck.get(0).image1);
-		card1 = new Graphic(15,200, 60,80, PlayerHand.hand.get(0).image1);
-		card2 = new Graphic(100,200, 60,80, PlayerHand.hand.get(1).image1);
+		card1 = new Graphic(100, 200, 60, 80, PlayerHand.hand.get(0).image1);
+		card2 = new Graphic(185, 200, 60, 80, PlayerHand.hand.get(1).image1);
 		viewObjects.add(card1);
 		viewObjects.add(card2);
 		
 		name = new TextLabel(350, 50, 300, 60, "Blackjack");
+		
 		PlayerHand.checkValue(); //adds the values of the first 2 cards
-		playerCT = new TextLabel(400,50,300,60, "Your current total is " + PlayerHand.getPlayerTotal()); //text label to show the total
+		playerCT = new TextLabel(350, 50, 250, 300, "Your current total is " + PlayerHand.getPlayerTotal()); //text label to show the total
+	
 		hit = new Button(20, 350,65,40,"Hit", Color.green, new Action() {
 			@Override
 			public void act() {
 				if(PlayerHand.getStandCall() == true && PlayerHand.getPlayerTotal() < 21){
 					PlayerHand.hit();
-					viewObjects.add(new Graphic(positionCount + 85, nextRow, 60,80, PlayerHand.nextCard().image1));
-					PlayerHand.checkValue();
-					viewObjects.add(new TextLabel(400, 50,300, 60, "Your current total is " + PlayerHand.getPlayerTotal()));
 					positionCount += 85;
-					if(positionCount >= 695){
-						positionCount = 15;
-						nextRow += 100;
-					}
+					viewObjects.add(new Graphic(positionCount, nextRow, 60, 80, PlayerHand.nextCard().image1));
+					checkPosition();
+					PlayerHand.checkValue();
+					nextTotal();
 				}
 			}
 		});
@@ -83,11 +81,34 @@ public class BJScreen extends ClickableScreen implements Runnable {
 		stand = new Button(20,400,65,40,"Stand", Color.green, new Action(){
 			public void act(){
 				PlayerHand.setStandCall();
+	//			Dealer.dealerTurn();
 			}
 		});
 		
 		viewObjects.add(name);
 		viewObjects.add(hit);
 		viewObjects.add(stand);
+		viewObjects.add(playerCT);
+	}
+	
+	private void checkPosition(){
+		if(positionCount >= 395){
+			positionCount = 100;
+			nextRow += 100;
+		}
+	}
+	
+	private void changeText(String string) {
+		try {
+			playerCT.setText(string);
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void nextTotal() {
+		playerCT.setText("");
+		changeText("Your current total is " + PlayerHand.getPlayerTotal());
 	}
 }

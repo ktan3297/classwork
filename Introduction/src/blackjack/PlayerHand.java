@@ -20,10 +20,10 @@ public class PlayerHand {
 		hand = new ArrayList <Card>();
 	}
 
-
 	public static void checkValue() {
+		playerTotal = 0;
 		for(int i = 0; i < hand.size(); i++){
-			playerTotal += hand.get(0).value;
+			playerTotal += hand.get(i).value;
 		}
 		setPlayerTotal(playerTotal);
 	}

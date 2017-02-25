@@ -19,7 +19,6 @@ public class BJGame extends GUIApplication {
 	public void initScreen() {
 		BJScreen game = new BJScreen(getWidth(), getHeight());
 		setScreen(game);
-		
 	}
 
 }
