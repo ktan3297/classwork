@@ -8,12 +8,12 @@ import java.util.ArrayList;
  *
  */
  
-public class PlayerHand{
+public class PlayerHand {
 
 	public static ArrayList <Card> hand;
 	public static boolean player = true;
 	private static int playerTotal = 0;
-	public int finalTotal;
+	public static int finalTotal;
 	public static Card nextCard;
 
 	public PlayerHand(){
@@ -30,8 +30,8 @@ public class PlayerHand{
  
 
 	public boolean stand() {
+		setStandCall();
 		finalTotal = playerTotal;
-		player = false;
 		return player;
 	}
 
@@ -39,20 +39,25 @@ public class PlayerHand{
 			hand.add(Deck.deck.get(0));
 			nextCard = Deck.deck.get(0);
 			Deck.deck.remove(0);
-		
 	}
 
 	public static Card nextCard(){
 		return nextCard;
 	}
 
-
 	public static int getPlayerTotal() {
-		return playerTotal;
+		return PlayerHand.playerTotal;
 	}
-
 
 	public static void setPlayerTotal(int playerTotal) {
 		PlayerHand.playerTotal = playerTotal;
+	}
+
+	public static void setStandCall() {
+		player = false;
+	}
+
+	public static boolean getStandCall() {
+		return player;
 	}
 }

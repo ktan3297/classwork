@@ -17,9 +17,26 @@ public class Dealer implements CallInterface {
 	 
 	public Dealer() {
 		dealerHand = new ArrayList <Card>();
-		while(dealerPlaying){
-			checkValue();
-			chance();
+		if(!PlayerHand.getStandCall()){ //if not player's turn
+			while(dealerPlaying){ //computer plays
+				checkValue(); //checkValue
+				chance(); //take a chance
+			}
+		}
+		checkWinner();
+	}
+	
+	public void checkWinner(){
+		if(!dealerPlaying && !PlayerHand.getStandCall()){
+			if(getTotal() > PlayerHand.getPlayerTotal()){
+				//computer wins and player loses money
+			}
+			else if(getTotal() < PlayerHand.getPlayerTotal()){
+				//player wins and player wins money
+			}
+			else if(getTotal() == PlayerHand.getPlayerTotal()){
+				//tie 
+			}
 		}
 	}
 	
@@ -84,6 +101,28 @@ public class Dealer implements CallInterface {
 		finalCTotal = currentTotal;
 		dealerPlaying = false;
 		return dealerPlaying;
+	}
+
+	@Override
+	public boolean getStandCall() {
+		// TODO Auto-generated method stub
+		return dealerPlaying;
+	}
+
+	@Override
+	public void setStandCall() {
+		dealerPlaying = false;
+		
+	}
+
+	@Override
+	public int getTotal() {
+		return finalCTotal;
+	}
+
+	@Override
+	public void setTotal() {
+		finalCTotal = currentTotal;
 	}
 
 	

@@ -25,6 +25,7 @@ public class BJScreen extends ClickableScreen implements Runnable {
 	public Button hit;
 	public Button stand;
 	private TextLabel name;
+	private TextLabel playerCT;
 	private Graphic background;
 	public Graphic card1;
 	public Graphic card2;
@@ -60,23 +61,28 @@ public class BJScreen extends ClickableScreen implements Runnable {
 		viewObjects.add(card2);
 		
 		name = new TextLabel(350, 50, 300, 60, "Blackjack");
+		PlayerHand.checkValue(); //adds the values of the first 2 cards
+		playerCT = new TextLabel(400,50,300,60, "Your current total is " + PlayerHand.getPlayerTotal()); //text label to show the total
 		hit = new Button(20, 350,65,40,"Hit", Color.green, new Action() {
-			
 			@Override
 			public void act() {
+				if(PlayerHand.getStandCall() == true && PlayerHand.getPlayerTotal() < 21){
 					PlayerHand.hit();
 					viewObjects.add(new Graphic(positionCount + 85, nextRow, 60,80, PlayerHand.nextCard().image1));
+					PlayerHand.checkValue();
+					viewObjects.add(new TextLabel(400, 50,300, 60, "Your current total is " + PlayerHand.getPlayerTotal()));
 					positionCount += 85;
 					if(positionCount >= 695){
 						positionCount = 15;
 						nextRow += 100;
 					}
+				}
 			}
 		});
 		
 		stand = new Button(20,400,65,40,"Stand", Color.green, new Action(){
 			public void act(){
-			//	PlayerHand.stay();
+				PlayerHand.setStandCall();
 			}
 		});
 		

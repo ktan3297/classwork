@@ -14,7 +14,7 @@ public class SimonGameKristyT extends GUIApplication {
 	@Override
 	public void initScreen() {
 		SimonScreenKristyT sgkt = new SimonScreenKristyT(getWidth(), getHeight());
-		setScreen(sgkt);
+		setScreen(sgkt); 
 	}
 
 	public static void main(String[] args) {
