@@ -21,10 +21,10 @@ public class Dealer implements CallInterface {
 	}
 	
 	public void dealerTurn(){
-			while(dealerPlaying){ //computer plays
-				checkValue(); //checkValue
-				chance(); //take a chance
-			}
+		while(dealerPlaying){ //computer plays
+			checkValue(); //checkValue
+			chance(); //take a chance
+		}
 	}
 	
 	public void checkWinner(){
@@ -81,6 +81,7 @@ public class Dealer implements CallInterface {
 			}
 		}
 	}
+	
 	@Override 
 	public int checkValue() {
 		if(dealerPlaying){

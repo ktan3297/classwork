@@ -13,6 +13,7 @@ public class PlayerHand {
 	public static ArrayList <Card> hand;
 	public static boolean player = true;
 	private static int playerTotal = 0;
+	private static int secondPlayerTotal = 0;
 	public static int finalTotal;
 	public static Card nextCard;
 
@@ -27,7 +28,6 @@ public class PlayerHand {
 		}
 		setPlayerTotal(playerTotal);
 	}
- 
 
 	public boolean stand() {
 		setStandCall();

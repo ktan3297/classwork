@@ -41,7 +41,7 @@ public class Deck implements DeckInterface{
 		int iNum = 0;
 		for(int i = 0; i < 13; i++){
 			for(int s = 0; s < 4; s++){
-				if(i == 10 || i == 11 || i == 12 ){
+				if(i == 10 || i == 11 || i == 12 ){ //if jack, queen, or king the value is always 10
 					deck.add(new Card(10, faces[i], suit[s], cardImages[iNum]));
 			//		System.out.println("hi");
 					iNum++;
@@ -55,7 +55,7 @@ public class Deck implements DeckInterface{
 		}
 	} 
 	 
-	public void shuffleDeck(){
+	public void shuffleDeck(){	//takes random number and swaps cards with that position
 		for(int i = 0; i < deck.size(); i++){
 			int randNum = (int) (Math.random() * deck.size());
 			Card holder = deck.get(randNum);
@@ -65,11 +65,11 @@ public class Deck implements DeckInterface{
 		setDeck(deck);
 	}
 	
-	public void initialStart(){
+	public void initialStart(){ //passes one card to dealer and then to dealer (repeated twice)
 		for(int i = 0; i < 2; i++){
-			System.out.println("i");
+		//	System.out.println("i");
 			Dealer.dealerHand.add(deck.get(0));
-			System.out.println("ok");
+		//	System.out.println("ok");
 			deck.remove(0);
 			PlayerHand.hand.add(deck.get(0));
 			deck.remove(0);

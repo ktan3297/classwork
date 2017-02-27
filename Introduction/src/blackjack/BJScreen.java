@@ -29,19 +29,16 @@ public class BJScreen extends ClickableScreen implements Runnable {
 	private Graphic background;
 	public Graphic card1;
 	public Graphic card2;
+	private Graphic backCard1;
+	private Graphic backCard2;
 	public int positionCount = 185;
 	public int nextRow = 200;
+	
 	
 	public BJScreen(int width, int height) {
 		super(width, height);
 		Thread app = new Thread(this);
 		app.start();
-	}
-
-	@Override
-	public void run() {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
@@ -56,13 +53,17 @@ public class BJScreen extends ClickableScreen implements Runnable {
 		
 		card1 = new Graphic(100, 200, 60, 80, PlayerHand.hand.get(0).image1);
 		card2 = new Graphic(185, 200, 60, 80, PlayerHand.hand.get(1).image1);
+		backCard1 = new Graphic(600, 200, 60, 80, "resources/sampleImages/backofcard.png");
+		backCard2 = new Graphic(630, 200, 60, 80, "resources/sampleImages/backofcard.png");
 		viewObjects.add(card1);
 		viewObjects.add(card2);
+		viewObjects.add(backCard1);
+		viewObjects.add(backCard2);
 		
 		name = new TextLabel(350, 50, 300, 60, "Blackjack");
 		
 		PlayerHand.checkValue(); //adds the values of the first 2 cards
-		playerCT = new TextLabel(350, 50, 250, 300, "Your current total is " + PlayerHand.getPlayerTotal()); //text label to show the total
+		playerCT = new TextLabel(300, 50, 250, 300, "Your current total is " + PlayerHand.getPlayerTotal()); //text label to show the total
 	
 		hit = new Button(20, 350,65,40,"Hit", Color.green, new Action() {
 			@Override
@@ -81,7 +82,7 @@ public class BJScreen extends ClickableScreen implements Runnable {
 		stand = new Button(20,400,65,40,"Stand", Color.green, new Action(){
 			public void act(){
 				PlayerHand.setStandCall();
-	//			Dealer.dealerTurn();
+				//dealer turn goes here
 			}
 		});
 		
@@ -99,16 +100,16 @@ public class BJScreen extends ClickableScreen implements Runnable {
 	}
 	
 	private void changeText(String string) {
-		try {
-			playerCT.setText(string);
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+		playerCT.setText(string);
 	}
 
 	public void nextTotal() {
 		playerCT.setText("");
 		changeText("Your current total is " + PlayerHand.getPlayerTotal());
+	}
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
 	}
 }
