@@ -68,7 +68,7 @@ public class Dealer implements CallInterface {
 			if(chance >= 90){
 				hit();
 			}
-			else{
+			else{ 
 				stand();
 			}
 		}
@@ -79,7 +79,7 @@ public class Dealer implements CallInterface {
 			else{
 				stand();
 			}
-		}
+		} 
 	}
 	
 	@Override 

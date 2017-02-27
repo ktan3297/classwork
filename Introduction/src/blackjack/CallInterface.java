@@ -12,4 +12,4 @@ public interface CallInterface {
 	public int getTotal();
 	public void setTotal();
 }
- 
+  

@@ -2,11 +2,11 @@ package blackjack;
 
 import java.util.ArrayList;
 
-/**
+/** 
  * 
  * @author Kristy
  *
- */
+ */ 
  
 public class PlayerHand {
 

@@ -76,7 +76,7 @@ public class BJScreen extends ClickableScreen implements Runnable {
 					PlayerHand.checkValue();
 					nextTotal();
 				}
-			}
+			} 
 		});
 		
 		stand = new Button(20,400,65,40,"Stand", Color.green, new Action(){

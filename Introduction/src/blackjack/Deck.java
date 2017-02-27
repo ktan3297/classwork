@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class Deck implements DeckInterface{
 
 	public static ArrayList <Card> deck;
- 	
+ 	 
 	public Deck() {
 		generateDeck();
 //		for(int i = 0 ; i <deck.size(); i++){
