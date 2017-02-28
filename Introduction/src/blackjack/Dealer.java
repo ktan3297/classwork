@@ -13,7 +13,8 @@ public class Dealer implements CallInterface {
 	private int currentTotal = 0;
 	public boolean dealerPlaying;
 	public int finalCTotal;
-	public int rewards; 
+	public int rewards;
+	private int secondTotal; 
 	 
 	public Dealer() {
 		dealerHand = new ArrayList <Card>();
@@ -29,13 +30,13 @@ public class Dealer implements CallInterface {
 	
 	public void checkWinner(){
 		if(!dealerPlaying && !PlayerHand.getStandCall()){
-			if(getTotal() > PlayerHand.getPlayerTotal()){
+			if(getTotal() > PlayerHand.getPlayerTotal() || getTotal() > PlayerHand.get2ndTotal() || get2ndTotal() > PlayerHand.getPlayerTotal() || get2ndTotal() > PlayerHand.get2ndTotal()){
 				//computer wins and player loses money
 			}
-			else if(getTotal() < PlayerHand.getPlayerTotal()){
+			else if(getTotal() < PlayerHand.getPlayerTotal() || getTotal() < PlayerHand.get2ndTotal() || get2ndTotal() < PlayerHand.getPlayerTotal() || get2ndTotal() < PlayerHand.get2ndTotal()){
 				//player wins and player wins money
 			}
-			else if(getTotal() == PlayerHand.getPlayerTotal()){
+			else if(getTotal() == PlayerHand.getPlayerTotal() || getTotal() == PlayerHand.get2ndTotal() || get2ndTotal() == PlayerHand.getPlayerTotal() || get2ndTotal() == PlayerHand.get2ndTotal()){
 				//tie 
 			}
 		}
@@ -86,10 +87,18 @@ public class Dealer implements CallInterface {
 	public int checkValue() {
 		if(dealerPlaying){
 			currentTotal = 0;
+			secondTotal = 0;
 			for(int i = 0; i < dealerHand.size(); i++){
 				currentTotal += dealerHand.get(i).value;
+				if(dealerHand.get(i).faceValue == "ace"){
+					secondTotal += 11;
+				}
+				else{
+					secondTotal += dealerHand.get(i).value;
+				}
 			}
 		}
+		set2ndTotal(secondTotal);
 		return currentTotal;
 	}
 
@@ -125,5 +134,14 @@ public class Dealer implements CallInterface {
 	@Override
 	public void setTotal() {
 		finalCTotal = currentTotal;
+	}
+	
+	public int get2ndTotal(){
+		return secondTotal;
+		
+	}
+	
+	public void set2ndTotal(int num1){
+		secondTotal = num1;
 	}
 }

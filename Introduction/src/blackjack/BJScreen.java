@@ -68,21 +68,25 @@ public class BJScreen extends ClickableScreen implements Runnable {
 		hit = new Button(20, 350,65,40,"Hit", Color.green, new Action() {
 			@Override
 			public void act() {
-				if(PlayerHand.getStandCall() == true && PlayerHand.getPlayerTotal() < 21){
-					PlayerHand.hit();
-					positionCount += 85;
-					viewObjects.add(new Graphic(positionCount, nextRow, 60, 80, PlayerHand.nextCard().image1));
-					checkPosition();
-					PlayerHand.checkValue();
-					nextTotal();
+				if(PlayerHand.getStandCall() == true){
+					if(PlayerHand.getPlayerTotal() < 21 || PlayerHand.get2ndTotal() < 21){
+						PlayerHand.hit();
+						positionCount += 85;
+						viewObjects.add(new Graphic(positionCount, nextRow, 60, 80, PlayerHand.nextCard().image1));
+						checkPosition();
+						PlayerHand.checkValue();
+						nextTotal();
+					}
 				}
 			} 
 		});
 		
 		stand = new Button(20,400,65,40,"Stand", Color.green, new Action(){
 			public void act(){
-				PlayerHand.setStandCall();
-				//dealer turn goes here
+				if(PlayerHand.getStandCall() == true){
+					PlayerHand.setStandCall();
+					dealer1.dealerTurn();
+				}
 			}
 		});
 		
@@ -105,7 +109,12 @@ public class BJScreen extends ClickableScreen implements Runnable {
 
 	public void nextTotal() {
 		playerCT.setText("");
-		changeText("Your current total is " + PlayerHand.getPlayerTotal());
+		PlayerHand.checkValue();
+		if(PlayerHand.getPlayerTotal() != PlayerHand.get2ndTotal()){
+			changeText("Your current total is " + PlayerHand.getPlayerTotal() + " or " + PlayerHand.get2ndTotal());
+		}else{
+			changeText("Your current total is " + PlayerHand.getPlayerTotal());
+		}
 	}
 
 	@Override

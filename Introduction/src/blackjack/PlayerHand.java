@@ -23,10 +23,26 @@ public class PlayerHand {
 
 	public static void checkValue() {
 		playerTotal = 0;
+		secondPlayerTotal = 0;
 		for(int i = 0; i < hand.size(); i++){
 			playerTotal += hand.get(i).value;
+			if(hand.get(i).faceValue == "ace"){
+				secondPlayerTotal += 11;
+			}
+			else{
+				secondPlayerTotal += hand.get(i).value;
+			}
+			
 		}
+		
+		System.out.println(playerTotal);
+		System.out.println(secondPlayerTotal);
+		
+		set2ndTotal(secondPlayerTotal);
 		setPlayerTotal(playerTotal);
+		if(secondPlayerTotal > 21 || playerTotal > 21){
+			setStandCall();
+		}
 	}
 
 	public boolean stand() {
@@ -51,6 +67,14 @@ public class PlayerHand {
 
 	public static void setPlayerTotal(int playerTotal) {
 		PlayerHand.playerTotal = playerTotal;
+	}
+	
+	public static int get2ndTotal(){
+		return PlayerHand.secondPlayerTotal;
+	}
+	
+	public static void set2ndTotal(int total){
+		PlayerHand.secondPlayerTotal = total;
 	}
 
 	public static void setStandCall() {
