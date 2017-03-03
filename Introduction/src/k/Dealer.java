@@ -37,29 +37,29 @@ public class Dealer implements CallInterface {
 					if(PlayerHand.getPlayerTotal() < 22 && (PlayerHand.getPlayerTotal() > PlayerHand.get2ndTotal() || PlayerHand.getPlayerTotal() == PlayerHand.get2ndTotal())){
 						if(getTotal() > PlayerHand.getPlayerTotal()){
 							setWinner("true");
-							System.out.println("1t");
+		//					System.out.println("1t");
 						}	
 						else if(getTotal() == PlayerHand.getPlayerTotal()){
 							setWinner("tie");
-							System.out.println("1e");
+		//					System.out.println("1e");
 						}
 						else if(getTotal() != PlayerHand.getPlayerTotal() && getTotal() < PlayerHand.getPlayerTotal()){
 							setWinner("false");
-							System.out.println("1f");
+		//					System.out.println("1f");
 						}
 					}
 					else if(PlayerHand.get2ndTotal() < 22 && (PlayerHand.get2ndTotal() > PlayerHand.getPlayerTotal() || PlayerHand.get2ndTotal() == PlayerHand.getPlayerTotal())){
 						if(getTotal() > PlayerHand.get2ndTotal()){
 							setWinner("true");
-							System.out.println("12t");
+		//					System.out.println("12t");
 						}
 						else if(getTotal() == PlayerHand.get2ndTotal()){
 							setWinner("tie");
-							System.out.println("12e");
+		//					System.out.println("12e");
 						}
 						else if(getTotal() != PlayerHand.get2ndTotal() && getTotal() < PlayerHand.get2ndTotal()){
 							setWinner("false");
-							System.out.println("12f");
+		//					System.out.println("12f");
 						}
 					}
 				}
@@ -67,36 +67,36 @@ public class Dealer implements CallInterface {
 						if(PlayerHand.getPlayerTotal() < 22 && (PlayerHand.getPlayerTotal() > PlayerHand.get2ndTotal() || PlayerHand.getPlayerTotal() == PlayerHand.get2ndTotal())){
 							if(get2ndTotal() > PlayerHand.getPlayerTotal()){
 								setWinner("true");
-								System.out.println("2t");
+		//						System.out.println("2t");
 							}	
 							else if(get2ndTotal() == PlayerHand.getPlayerTotal()){
 								setWinner("tie");
-								System.out.println("2e");
+		//						System.out.println("2e");
 							}
 							else if(get2ndTotal() != PlayerHand.getPlayerTotal() && get2ndTotal() < PlayerHand.getPlayerTotal()){
 								setWinner("false");
-								System.out.println("2f");
+		//						System.out.println("2f");
 							}
 						}
 						else if(PlayerHand.get2ndTotal() < 22 && (PlayerHand.get2ndTotal() > PlayerHand.getPlayerTotal() || PlayerHand.get2ndTotal() == PlayerHand.getPlayerTotal())){
 							if(get2ndTotal() > PlayerHand.get2ndTotal()){
 								setWinner("true");
-								System.out.println("22t");
+		//						System.out.println("22t");
 							}
 							else if(get2ndTotal() == PlayerHand.get2ndTotal()){
 								setWinner("tie");
-								System.out.println("22e");
+		//						System.out.println("22e");
 							}
 							else if(get2ndTotal() != PlayerHand.get2ndTotal() && get2ndTotal() < PlayerHand.get2ndTotal()){
 								setWinner("false");
-								System.out.println("22f");
+		//						System.out.println("22f");
 							}
 						}
 					}
 			}	
 			else{
 				setWinner("false");
-				System.out.println("auto loss");
+		//		System.out.println("auto loss");
 			}
 	}
 //		if(dealerPlaying == false && PlayerHand.getStandCall() == false){
@@ -234,7 +234,7 @@ public class Dealer implements CallInterface {
 
 	@Override
 	public String getWinner() {
-		System.out.println("result: " +computerWinner);
+	//	System.out.println("result: " +computerWinner);
 		return computerWinner;
 	}
 
